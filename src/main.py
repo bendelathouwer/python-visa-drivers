@@ -1,2 +1,3 @@
-from  scoop_wrapper import *
-scoopinit('TCPIP0::169.254.226.8 ::INSTR')
+import scoop_wrapper
+
+scoop=scoop_wrapper.scoop()
