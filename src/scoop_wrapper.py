@@ -21,7 +21,8 @@ class scoop(object):
         else:
             print("Identification string: '%s'" % idn_string)
         self.scope.timeout = 15000
-    def autoscale(self):#autoscales the scoop trace on any channel
+    def autoscale(self):#aut\
+        hjgndfc# oscales the scoop trace on any channel
         self.scope.write(":AUT")
     def clearscoop(self):#clears the traces in single run mode from the display
         self.scope.write(":CLE")
@@ -39,3 +40,4 @@ class scoop(object):
     def setnrofavrages(self,nr):#error 
 
         self.scope.write(":ACQ:AVER"+str(nr))
+        pass
