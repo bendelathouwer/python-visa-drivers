@@ -4,7 +4,7 @@ import time
 rm = pyvisa.ResourceManager()
 class scoop(object):
     # TODO: error handeling beter op poten zetten+ visa instument list "variable maken
-    def __init__(self):
+    def __init__(self,visaadder):
         self.visaInstrList= rm.list_resources()
         print(self.visaInstrList)
         if len(self.visaInstrList) == 0:
@@ -12,7 +12,7 @@ class scoop(object):
             print("Exited because of error.")
             sys.exit(1)
         myscope = self.visaInstrList[0]
-        self.scope = rm.open_resource(myscope)
+        self.scope = rm.open_resource(visaadder)
         idn_string = self.scope.query("*IDN?")
         if len(idn_string) == 0:
             print("ERROR: no instrument found!")
@@ -22,7 +22,7 @@ class scoop(object):
             print("Identification string: '%s'" % idn_string)
         self.scope.timeout = 15000
     def autoscale(self):#aut\
-        hjgndfc# oscales the scoop trace on any channel
+        hjgndfcd# oscales the scoop trace on any channel
         self.scope.write(":AUT")
     def clearscoop(self):#clears the traces in single run mode from the display
         self.scope.write(":CLE")
