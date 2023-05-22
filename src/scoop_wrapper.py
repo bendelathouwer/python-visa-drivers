@@ -21,8 +21,7 @@ class scoop(object):
         else:
             print("Identification string: '%s'" % idn_string)
         self.scope.timeout = 15000
-    def autoscale(self):#aut\
-        hjgndfcd# oscales the scoop trace on any channel
+    def autoscale(self):#autoscales the scoop trace on any channel
         self.scope.write(":AUT")
     def clearscoop(self):#clears the traces in single run mode from the display
         self.scope.write(":CLE")
@@ -34,10 +33,26 @@ class scoop(object):
         self.scope.write(":SING")
     def forcetrigger(self):#only works in single or normal trigger mode
         self.scope.write(":TFOR")
-    def nrofavrages(self):
-        nr=self.scope.query(":ACQ:AVER?")
-        return nr
-    def setnrofavrages(self,nr):#error 
+    def aquirenrofavrages(self):
+        avrages=self.scope.query(":ACQ:AVER?")
+        return avrages
+    def setnrofavrages(self,nr):
+        # TODO write code to catch out of bound input
+        self.scope.write(":ACQ:AVER %d"%nr)
+    def aquirememdepth(self):
+        memdepth = self.scope.query(":ACQ:MDEP?")
+        return memdepth
+    def setmemdepth(self,memmorydepth):
+        # TODO write code to catch out of bound input
+        self.scope.write(":ACQ:MDEP %s" % memmorydepth)
+    def aquiretype(self):
+        aquire = self.scope.query(":ACQ:TYPE?")
+        return aquire
+    def setaquiretype(self,type):
+        # TODO write code to catch out of bound input
+        self.scope.write(":ACQuire:TYPE %s" % type)
 
-        self.scope.write(":ACQ:AVER"+str(nr))
-        pass
+
+
+
+
