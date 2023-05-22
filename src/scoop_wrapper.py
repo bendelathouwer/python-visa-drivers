@@ -3,7 +3,8 @@ import sys
 import time
 rm = pyvisa.ResourceManager()
 class scoop(object):
-    # TODO: error handeling beter op poten zetten+ visa instument list "variable maken
+    # TODO: make the error handeling better
+
     def __init__(self,visaadder):
         self.visaInstrList= rm.list_resources()
         print(self.visaInstrList)
@@ -11,7 +12,6 @@ class scoop(object):
             print("ERROR: no instrument found!")
             print("Exited because of error.")
             sys.exit(1)
-        myscope = self.visaInstrList[0]
         self.scope = rm.open_resource(visaadder)
         idn_string = self.scope.query("*IDN?")
         if len(idn_string) == 0:
@@ -51,8 +51,15 @@ class scoop(object):
     def setaquiretype(self,type):
         # TODO write code to catch out of bound input
         self.scope.write(":ACQuire:TYPE %s" % type)
+    def aquiresamplerate(self):#TODOm
+        samplerate = self.scope.query(":ACQ:SRAT?")
+        return samplerate
+    def startcal(self):
+        print("DISCONECT EVERYTHING!")
 
+        self.scope.write(":CAL:STAR")
 
-
+    def stopcal(self):
+        self.scope.write(":CAL:QUIT")
 
 
