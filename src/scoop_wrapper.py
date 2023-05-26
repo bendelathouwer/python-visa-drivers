@@ -56,10 +56,21 @@ class scoop(object):
         return samplerate
     def startcal(self):
         print("DISCONECT EVERYTHING!")
-
         self.scope.write(":CAL:STAR")
-
     def stopcal(self):
         self.scope.write(":CAL:QUIT")
+    def aquirechanelBW(self,channel):
+        channelbw = self.scope.query(":CHAN%d:BWL?"%channel)
+        return channelbw
+
+    def setchannelBW(self,channel,BW):
+        self.scope.write(":CHAN%d:BWL %s " %(channel,BW))
+
+    def aquirechanelcoupling(self,channel):
+        channelcoupling = self.scope.query(":CHAN%d:COUP?"%channel)
+        return channelcoupling
+        pass
+    def setchannelcoupling(self,channel,coupling):
+        self.scope.write("CHAN%d:COUP %s " %(channel,coupling))
 
 
