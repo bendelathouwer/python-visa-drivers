@@ -72,5 +72,10 @@ class scoop(object):
         pass
     def setchannelcoupling(self,channel,coupling):
         self.scope.write("CHAN%d:COUP %s " %(channel,coupling))
+    def aquiredisplaychannel(self,channel):
+        display = self.scope.query(":CHAN%d:DISP?"%channel)
+        return display
 
+    def setdisplaychannel(self,channel,status):
+        self.scope.write("CHAN%d:DISP %s " %(channel,status))
 
