@@ -75,7 +75,12 @@ class scoop(object):
     def aquiredisplaychannel(self,channel):
         display = self.scope.query(":CHAN%d:DISP?"%channel)
         return display
-
     def setdisplaychannel(self,channel,status):
         self.scope.write("CHAN%d:DISP %s " %(channel,status))
+
+    def aquiredchannelinversion(self,channel):
+        invers = self.scope.query(":CHAN%d:INV?"%channel)
+        return invers
+    def setchannelinversion(self,channel,inversion):
+        self.scope.write("CHAN%d:INV %s " %(channel,inversion))
 
