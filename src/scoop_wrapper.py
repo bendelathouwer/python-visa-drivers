@@ -83,4 +83,9 @@ class scoop(object):
         return invers
     def setchannelinversion(self,channel,inversion):
         self.scope.write("CHAN%d:INV %s " %(channel,inversion))
+    def aquiredchanneloffset(self,channel):#TODO timout opvangen
+        offset = self.scope.query(":CHAN%d:OFFS?"%channel)
+        return offset
+    def setchanneloffset(self,channel,offset):
+        self.scope.write("CHAN%d:OFFS %s " %(channel,offset))
 
