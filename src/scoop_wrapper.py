@@ -83,11 +83,8 @@ class scoop(object):
     def aquiredchanneloffset(self,channel):#TODO timout opvangen
         offset = self.scope.query(":CHAN%d:OFFS?"%channel)
         return offset
-    def setchanneloffset(self,channel):
-        range=self.scope.query("CHAN%d:range %s " %channel)
-        return range
-    def aquirechannelrange(self,channel):
-        range=self.scope.write("CHAN%d:OFFS %s " %channel)
+    def aquirechannelrange(self,channel):#TODO understand this
+        range=self.scope.write("CHAN%d:RANG? " %channel)
         return range
     def setchannelrange(self,channel,range):
-        pass
+        self.scope.write("CHAN%d:RANG %s " %(channel,range))
