@@ -62,10 +62,8 @@ class scoop(object):
     def aquirechanelBW(self,channel):
         channelbw = self.scope.query(":CHAN%d:BWL?"%channel)
         return channelbw
-
     def setchannelBW(self,channel,BW):
         self.scope.write(":CHAN%d:BWL %s " %(channel,BW))
-
     def aquirechanelcoupling(self,channel):
         channelcoupling = self.scope.query(":CHAN%d:COUP?"%channel)
         return channelcoupling
@@ -77,7 +75,6 @@ class scoop(object):
         return display
     def setdisplaychannel(self,channel,status):
         self.scope.write("CHAN%d:DISP %s " %(channel,status))
-
     def aquiredchannelinversion(self,channel):
         invers = self.scope.query(":CHAN%d:INV?"%channel)
         return invers
@@ -86,6 +83,11 @@ class scoop(object):
     def aquiredchanneloffset(self,channel):#TODO timout opvangen
         offset = self.scope.query(":CHAN%d:OFFS?"%channel)
         return offset
-    def setchanneloffset(self,channel,offset):
-        self.scope.write("CHAN%d:OFFS %s " %(channel,offset))
-
+    def setchanneloffset(self,channel):
+        range=self.scope.query("CHAN%d:range %s " %channel)
+        return range
+    def aquirechannelrange(self,channel):
+        range=self.scope.write("CHAN%d:OFFS %s " %channel)
+        return range
+    def setchannelrange(self,channel,range):
+        pass
