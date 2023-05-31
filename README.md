@@ -5,5 +5,4 @@ Visa drivers for my and your instruments!
 instrument| type of instrument | manufaturer | compatible |tested connection method|remarks
 :------------ |:-------------------|:------------|:-----------| :------------| :------------| 
 DS1104| scoop              | rigol       | &check;    | tcpip| USBTMC needs implementing
-kel103| load               | korad       |         | | next instrument to be writen for
 
