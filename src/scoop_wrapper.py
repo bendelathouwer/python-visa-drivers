@@ -89,3 +89,23 @@ class scoop(object):
     def setchannelrange(self,channel,range):
         self.scope.write("CHAN%d:RANG %s " %(channel,range))
 
+    def aquirechannelcal(self,channel):#TODO understand this
+        cal=self.scope.query("CHAN%d:TCAL? " %channel)
+        return cal
+    def setchannelcal(self,channel,cal):
+        self.scope.write("CHAN%d:TCAL %s " %(channel,cal))
+    def aquirechannelscale(self,channel):#TODO understand this
+        scale=self.scope.query("CHAN%d:SCAL? " %channel)
+        return scale
+    def setchannelscale(self,channel,scale):
+        self.scope.write("CHAN%d:SCAL %s " %(channel,scale))
+    def aquireproberatio(self,channel):#TODO understand this
+        proberatio=self.scope.query("CHAN%d:PROB? " %channel)
+        return proberatio
+    def setproberatio(self,channel,ratio):
+        self.scope.write("CHAN%d:PROB %s " %(channel,ratio))
+
+
+
+
+
