@@ -95,17 +95,17 @@ class scoop(object):
     def setchannelscale(self,channel,scale):
         self.scope.write("CHAN%d:SCAL %s " %(channel,scale))
     def aquirechannelvernier(self,channel):
-
-        pass
+        status= self.scope.query("CHAN%d:VERN? " % channel)
+        return status
     def setchannelvernier(self,channel,vernier):
-        pass
+        self.scope.write("CHAN%d:VERN %s " % (channel, vernier))
     def aquireproberatio(self,channel):#TODO understand this
         proberatio=self.scope.query("CHAN%d:PROB? " %channel)
         return proberatio
     def setproberatio(self,channel,ratio):
         self.scope.write("CHAN%d:PROB %s " %(channel,ratio))
 
-    def getchanelunit(self,channel):
+    def aquirechanelunit(self,channel):
         unit = self.scope.query("CHAN%d:UNIT? " % channel)
         return unit
     def setchannelunit(self,channel,unit):
