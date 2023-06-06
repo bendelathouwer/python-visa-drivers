@@ -7,11 +7,6 @@ class scoop(object):
 
     def __init__(self,visaadder):
         self.visaInstrList= rm.list_resources()
-        print(self.visaInstrList)
-        if len(self.visaInstrList) == 0:
-            print("ERROR: no instrument found!")
-            print("Exited because of error.")
-            sys.exit(1)
         self.scope = rm.open_resource(visaadder)
         idn_string = self.scope.query("*IDN?")
         if len(idn_string) == 0:
@@ -99,13 +94,21 @@ class scoop(object):
         return scale
     def setchannelscale(self,channel,scale):
         self.scope.write("CHAN%d:SCAL %s " %(channel,scale))
+    def aquirechannelvernier(self,channel):
+
+        pass
+    def setchannelvernier(self,channel,vernier):
+        pass
     def aquireproberatio(self,channel):#TODO understand this
         proberatio=self.scope.query("CHAN%d:PROB? " %channel)
         return proberatio
     def setproberatio(self,channel,ratio):
         self.scope.write("CHAN%d:PROB %s " %(channel,ratio))
 
-
-
+    def getchanelunit(self,channel):
+        unit = self.scope.query("CHAN%d:UNIT? " % channel)
+        return unit
+    def setchannelunit(self,channel,unit):
+        self.scope.write("CHAN%d:UNIT %s " % (channel, unit))
 
 
