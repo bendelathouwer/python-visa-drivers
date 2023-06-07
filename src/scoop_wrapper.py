@@ -111,4 +111,8 @@ class scoop(object):
     def setchannelunit(self,channel,unit):
         self.scope.write("CHAN%d:UNIT %s " % (channel, unit))
 
-
+    def querrycursormode(self):
+        mode = self.scope.query("CURS:MODE?")
+        return mode
+    def setcursormode(self,mode):
+        self.scope.write("CURSor:MODE %s " %mode)
