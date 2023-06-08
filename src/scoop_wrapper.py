@@ -115,4 +115,9 @@ class scoop(object):
         mode = self.scope.query("CURS:MODE?")
         return mode
     def setcursormode(self,mode):
-        self.scope.write("CURSor:MODE %s " %mode)
+        self.scope.write("CURS:MODE %s " %mode)
+    def querrymanualcursortype(self):
+        type = self.scope.query("CURS:MAN:TYPE?")
+        return type
+    def setmanualcursortype(self,cursortype):
+        self.scope.write(":CURS:MAN:TYPE %s " %cursortype)
