@@ -121,3 +121,14 @@ class scoop(object):
         return type
     def setmanualcursortype(self,cursortype):
         self.scope.write(":CURS:MAN:TYPE %s " %cursortype)
+    def querrymanualcursorsource(self):
+        source = self.scope.query("CURS:MAN:SOUR?")
+        return source
+    def setmanualcursorsource(self,source):
+        self.scope.write("CURS:MAN:SOUR %s " % source)
+    def querrycursorunit(self):
+        unit = self.scope.query("CURS:MAN:TUN? ")
+        return unit
+
+    def setmanualcursorsource(self, unit):
+        self.scope.write("CURS:MAN:TUN %s " % unit)
