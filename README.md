@@ -7,7 +7,7 @@ instrument| type of instrument | manufaturer | compatible |tested connection met
 DS1104| scoop              | rigol       | &check;    | tcpip| USBTMC needs implementing
 
 
-#todo
+# todo
 Here you will find a list of what still needs to be done.
 This list wil grow with the prodject 
 
