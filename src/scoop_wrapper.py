@@ -130,5 +130,13 @@ class scoop(object):
         unit = self.scope.query("CURS:MAN:TUN? ")
         return unit
 
-    def setmanualcursorsource(self, unit):
+    def setmanualcursorunit(self, unit):
         self.scope.write("CURS:MAN:TUN %s " % unit)
+
+
+    def querryvertcursorunit(self):
+        vertunit = self.scope.query("CURS:MAN:VUN? ")
+        return vertunit
+
+    def setmanualvercursorunit(self, vertunit):
+        self.scope.write("CURS:MAN:VUN %s " % vertunit)
