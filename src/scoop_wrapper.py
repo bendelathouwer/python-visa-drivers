@@ -15,7 +15,7 @@ class scoop(object):
             sys.exit(1)
         else:
             print("Identification string: '%s'" % idn_string)
-        self.scope.timeout = 15000
+        self.scope.timeout = 20000
     def autoscale(self):#autoscales the scoop trace on any channel
         self.scope.write(":AUT")
     def clearscoop(self):#clears the traces in single run mode from the display
@@ -144,4 +144,4 @@ class scoop(object):
         AXPOS = self.scope.query("CURS:MAN:AX? ")
         return AXPOS
     def setmanualAXpos(self,axpos):
-        self.scope.query("CURS:MAN:AX %s " %axpos)
+        self.scope.write("CURS:MAN:AX %s " %axpos)
