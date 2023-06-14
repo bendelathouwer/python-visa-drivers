@@ -140,3 +140,8 @@ class scoop(object):
 
     def setmanualvercursorunit(self, vertunit):
         self.scope.write("CURS:MAN:VUN %s " % vertunit)
+    def querrymanualAXpos(self):
+        AXPOS = self.scope.query("CURS:MAN:AX? ")
+        return AXPOS
+    def setmanualAXpos(self,axpos):
+        self.scope.query("CURS:MAN:AX %s " %axpos)
