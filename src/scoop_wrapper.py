@@ -154,5 +154,8 @@ class scoop(object):
     def setmanualbypost(self,bypos):
         self.scope.write("CURS:MAN:BY %s"%bypos)
     def querrymanualaxcursorvalue(self):
-        cursorvalue=self.scope.query("CURS:MANual:AXV?" )
-        return cursorvalue
+        cursoraxvalue=self.scope.query("CURS:MANual:AXV?" )
+        return cursoraxvalue
+    def querrymanualaycursorvalue(self):
+        cursorayvalue=self.scope.query("CURS:MAN:AYV? ")
+        return cursorayvalue
