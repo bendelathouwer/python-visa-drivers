@@ -4,7 +4,6 @@ import time
 rm = pyvisa.ResourceManager()
 class scoop(object):
     # TODO: make the error handeling better
-
     def __init__(self,visaadder):
         self.visaInstrList= rm.list_resources()
         self.scope = rm.open_resource(visaadder)
@@ -85,7 +84,7 @@ class scoop(object):
         self.scope.write("CHAN%d:RANG %s " %(channel,range))
 
     def aquirechannelcal(self,channel):#TODO understand this
-        cal=self.scope.query("CHAN%d:TCAL? " %channel)
+        cal = self.scope.query("CHAN%d:TCAL? " %channel)
         return cal
     def setchannelcal(self,channel,cal):
         self.scope.write("CHAN%d:TCAL %s " %(channel,cal))
@@ -104,13 +103,11 @@ class scoop(object):
         return proberatio
     def setproberatio(self,channel,ratio):
         self.scope.write("CHAN%d:PROB %s " %(channel,ratio))
-
     def aquirechanelunit(self,channel):
         unit = self.scope.query("CHAN%d:UNIT? " % channel)
         return unit
     def setchannelunit(self,channel,unit):
         self.scope.write("CHAN%d:UNIT %s " % (channel, unit))
-
     def querrycursormode(self):
         mode = self.scope.query("CURS:MODE?")
         return mode
@@ -129,15 +126,11 @@ class scoop(object):
     def querrycursorunit(self):
         unit = self.scope.query("CURS:MAN:TUN? ")
         return unit
-
     def setmanualcursorunit(self, unit):
         self.scope.write("CURS:MAN:TUN %s " % unit)
-
-
     def querryvertcursorunit(self):
         vertunit = self.scope.query("CURS:MAN:VUN? ")
         return vertunit
-
     def setmanualvercursorunit(self, vertunit):
         self.scope.write("CURS:MAN:VUN %s " % vertunit)
     def querrymanualAXpos(self):
@@ -145,3 +138,21 @@ class scoop(object):
         return AXPOS
     def setmanualAXpos(self,axpos):
         self.scope.write("CURS:MAN:AX %s " %axpos)
+    def querrymanualbxpos(self):
+        bxpos = self.scope.query("CURS:MAN:BX? ")
+        return bxpos
+    def setmanualAXpos(self,bxpos):
+        self.scope.write("CURS:MAN:BX %s " %bxpos)
+    def querrymanualaypos(self):
+        AYpos = self.scope.query("CURS:MAN:AY? ")
+        return AYpos
+    def setmanualaypos(self, aypos):
+        self.scope.write("CURS:MAN:AY %s " % aypos)
+    def querrymanualbypos(self):
+        bypos=self.scope.query("CURS:MAN:BY?" )
+        return bypos
+    def setmanualbypost(self,bypos):
+        self.scope.write("CURS:MAN:BY %s"%bypos)
+    def querrymanualaxcursorvalue(self):
+        cursorvalue=self.scope.query("CURS:MANual:AXV?" )
+        return cursorvalue
