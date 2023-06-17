@@ -159,3 +159,16 @@ class scoop(object):
     def querrymanualaycursorvalue(self):
         cursorayvalue=self.scope.query("CURS:MAN:AYV? ")
         return cursorayvalue
+    def querrymanualbxcursorvalue(self):
+        cursorbxvalue = self.scope.query("CURS:MAN:BXV?" )
+        return cursorbxvalue
+    def querrymanualbycursorvalue(self):
+        cursorbyvalue = self.scope.query("CURS:MAN:BYV?")
+        return cursorbyvalue
+    def querrymanualcursorxdelta(self):
+        xdelta= self.scope.query("CURS:MAN:XDEL?")
+        return xdelta
+    def querrymanualcursorixdelta(self):
+        # todo check why it times out when the scpi comand is writen in short
+        ixdelta = self.scope.query("CURSor:MANual:IXDELta?")
+        return ixdelta
