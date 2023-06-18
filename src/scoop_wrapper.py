@@ -172,7 +172,16 @@ class scoop(object):
         # todo check why it times out when the scpi comand is writen in short
         ixdelta = self.scope.query("CURSor:MANual:IXDELta?")
         return ixdelta
-
     def querrymanualcursorxdelta(self):
         ydelta = self.scope.query("CURS:MAN:YDEL?")
         return ydelta
+    def querrytrackcursorsource1(self):
+        tracksource1 = self.scope.query("CURS:TRAC:SOUR1? ")
+        return tracksource1
+    def settraccursorsource1(self,source):
+        self.scope.write("CURS:TRAC:SOUR1 %s " % source)
+    def querrytrackcursorsource2(self):
+        tracksource1 = self.scope.query("CURS:TRAC:SOUR2? ")
+        return tracksource1
+    def settraccursorsource2(self,source2):
+        self.scope.write("CURS:TRAC:SOUR2 %s " % source2)
