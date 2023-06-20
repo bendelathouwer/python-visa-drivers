@@ -82,7 +82,6 @@ class scoop(object):
         return range
     def setchannelrange(self,channel,range):
         self.scope.write("CHAN%d:RANG %s " %(channel,range))
-
     def aquirechannelcal(self,channel):#TODO understand this
         cal = self.scope.query("CHAN%d:TCAL? " %channel)
         return cal
@@ -185,3 +184,8 @@ class scoop(object):
         return tracksource1
     def settraccursorsource2(self,source2):
         self.scope.write("CURS:TRAC:SOUR2 %s " % source2)
+    def querrycursortrackAX(self):
+        axvalue= self.scope.query("CURSor:TRACk:AX? ")
+        return axvalue
+    def setcursortraxAX(self,value):
+        self.scope.write("CURSor:TRACk:AX %s " % value)
