@@ -189,3 +189,10 @@ class scoop(object):
         return axvalue
     def setcursortraxAX(self,value):
         self.scope.write("CURSor:TRACk:AX %s " % value)
+
+    def querrycursortrackBX(self):
+        bxvalue = self.scope.query("CURSor:TRACk:BX? ")
+        return bxvalue
+
+    def setcursortraxBX(self, value):
+        self.scope.write("CURSor:TRACk:BX %s " % value)
