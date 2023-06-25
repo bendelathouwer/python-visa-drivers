@@ -187,12 +187,41 @@ class scoop(object):
     def querrycursortrackAX(self):
         axvalue= self.scope.query("CURSor:TRACk:AX? ")
         return axvalue
-    def setcursortraxAX(self,value):
+    def setcursortracAX(self,value):
         self.scope.write("CURSor:TRACk:AX %s " % value)
-
     def querrycursortrackBX(self):
         bxvalue = self.scope.query("CURSor:TRACk:BX? ")
         return bxvalue
-
-    def setcursortraxBX(self, value):
+    def setcursortracBX(self, value):
         self.scope.write("CURSor:TRACk:BX %s " % value)
+
+    #these functions needs  understanding
+    def querrycursortrackAY(self):
+        ayvalue = self.scope.query("CURSor:TRACk:AY? ")
+        return ayvalue
+    def querrycursortrackBY(self):#need
+        byvalue = self.scope.query("CURSor:TRACk:BY? ")
+        return byvalue
+
+    def querrycursortrackAXValue(self):
+        axvalue = self.scope.query("CURSor:TRACk:AX? ")
+        return axvalue
+    def querrycursortrackBXValue(self):
+        bxvalue = self.scope.query("CURSor:TRACk:BX? ")
+        return bxvalue
+    def querrycursortrackBYValue(self):
+        byvalue = self.scope.query("CURSor:TRACk:BY? ")
+        return byvalue
+#--------------------------------------------------------
+    def querrycursortrackcursorXdelta(self):
+        xdeltavalue = self.scope.query("CURSor:TRACk:XDEL? ")
+        return xdeltavalue
+    def querrycursortrackcursorydelta(self):#needs understanding
+        ydeltavalue = self.scope.query("CURSor:TRACk:YDEL? ")
+        return ydeltavalue
+    def querrycursortrackcursorixdelta(self):#needs understanding
+        ixdeltavalue = self.scope.query("CURSor:TRACk:YDEL? ")
+        return ixdeltavalue
+
+
+
