@@ -223,5 +223,43 @@ class scoop(object):
         ixdeltavalue = self.scope.query("CURSor:TRACk:YDEL? ")
         return ixdeltavalue
 
+    def querryautocursornitem(self):
+        item = self.scope.query("CURS:AUTO:ITEM? ")
+        return item
+
+    def setautocursornitem(self,item):
+            self.scope.write("CURS:AUTO:ITEM %s " %item)
+    def querryautocursorax(self):
+           axvalue = self.scope.query("CURS:AUTO:AX? " )
+           return axvalue
+    def querryautocursorbx(self):
+          bxvalue = self.scope.query("CURS:AUTO:BX? " )
+          return bxvalue
+    def querryautocursorbx(self):
+          bxvalue = self.scope.query("CURS:AUTO:BX? " )
+          return bxvalue
+    def querryautocursoray(self):
+        ayvalue = self.scope.query("CURS:AUTO:ay? " )
+        return ayvalue
+    def querryautocursorby(self):
+        byvalue = self.scope.query("CURS:AUTO:by? " )
+        return byvalue
+
+    def querryautocursoraxvalue(self):
+        axvalue = self.scope.query("CURS:AUTO:AXV? ")
+        return axvalue
+
+    def querryautocursorayvalue(self):
+        ayvalue = self.scope.query("CURS:AUTO:AYV? ")
+        return ayvalue
+
+
+    def querryautocursorbxvalue(self):
+        bxvalue = self.scope.query("CURS:AUTO:BXV? ")
+        return bxvalue
+
+    def querryautocursorbyvalue(self):
+        byvalue = self.scope.query("CURS:AUTO:BYV? ")
+        return byvalue
 
 
