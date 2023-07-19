@@ -212,7 +212,7 @@ class scoop(object):
     def querrycursortrackBYValue(self):
         byvalue = self.scope.query("CURSor:TRACk:BY? ")
         return byvalue
-#--------------------------------------------------------
+
     def querrycursortrackcursorXdelta(self):
         xdeltavalue = self.scope.query("CURSor:TRACk:XDEL? ")
         return xdeltavalue
@@ -261,5 +261,8 @@ class scoop(object):
     def querryautocursorbyvalue(self):
         byvalue = self.scope.query("CURS:AUTO:BYV? ")
         return byvalue
-
-
+    def querryxycursiraxvalue(self):
+            axvalue = self.scope.query("CURS:XY:AX? ")
+            return axvalue
+    def setxycursiraxvalue(self,value):
+        self.scope.write("CURS:XY:AX %s" %value)
