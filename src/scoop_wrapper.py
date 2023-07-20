@@ -273,3 +273,15 @@ class scoop(object):
 
     def setxycursorbxvalue(self, value):
         self.scope.write("CURS:XY:bx %s" % value)
+    def querryxycursirayvalue(self):
+        axvalue = self.scope.query("CURS:XY:AY? ")
+        return axvalue
+
+    def setxycursorayvalue(self, value):
+        self.scope.write("CURS:XY:AY %s" % value)
+    def querryxycursirbyvalue(self):
+        axvalue = self.scope.query("CURS:XY:BY? ")
+        return axvalue
+
+    def setxycursorbyalue(self, value):
+        self.scope.write("CURS:XY:BY %s" % value)
