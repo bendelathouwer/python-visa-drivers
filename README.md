@@ -4,7 +4,7 @@ Visa drivers for my and your instruments!
 # compatible instruments  
 instrument| type of instrument | manufaturer | compatible |tested connection method|remarks
 :------------ |:-------------------|:------------|:-----------| :------------| :------------| 
-DS1104| scoop              | rigol       | &check;    | tcpip| USBTMC needs implementing
+DS1104| scoop              | rigol       | &check;    | tcpip| USBTMC , protocol decoders needs implementing 
 
 
 # todo
@@ -17,4 +17,7 @@ This list wil grow with the project
 
 -[ ] implement error handeling 
 
--[ ] clean up the code 
+-[ ] clean up the code
+
+- [ ] write the decoder funtions once a protocol decoder hase been aquired 
+
