@@ -308,5 +308,11 @@ class scoop(object):
     def setmathdisplay(self,value):
        self.scope.write(":MATH:DISPlay %s" %value)
 
+    def querrymathopperator(self):
+        opperator=self.scope.query(":MATH:OPERator?")
+        return opperator
+
+    def setmathopperator (self,opperator):
+        self.scope.write(" :MATH:OPERator %s" %opperator)
 
 
