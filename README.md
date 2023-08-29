@@ -11,13 +11,15 @@ DS1104| scoop              | rigol       | &check;    | tcpip| USBTMC , protocol
 Here you will find a list of what still needs to be done.
 This list wil grow with the project 
 
--[ ] write a read me and wiki
+- [ ] write a read me and wiki
 
--[ ] write a usbTMC wrapper which works alongside the tcpip code 
+- [ ] write a usbTMC wrapper which works alongside the tcpip code 
 
--[ ] implement error handeling 
+- [ ] implement error handeling 
 
--[ ] clean up the code
+- [ ] clean up the code
 
-- [ ] write the decoder funtions once a protocol decoder hase been aquired 
+- [ ] write the decoder funtions once a protocol decoder hase been aquired
+    
+- [ ] added display and IEEE commands 
 
