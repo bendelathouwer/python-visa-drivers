@@ -322,3 +322,8 @@ class scoop(object):
         return mathsource
     def setmathsource1(self, channel):
         self.scope.write(":MATH:SOURce1 CHANnel%s" %channel)
+    def querrymathsource2(self):
+        mathsource=self.scope.query(":MATH:SOURce2?")
+        return mathsource
+    def setmathsource2(self, channel):
+        self.scope.write(":MATH:SOURce2 CHANnel%s" %channel)
