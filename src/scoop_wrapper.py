@@ -4,6 +4,7 @@ import time
 rm = pyvisa.ResourceManager()
 class scoop(object):
     # TODO: make the error handeling better
+    # TODO: add usb and usbtmc supor
     def __init__(self,visaadder):
         self.visaInstrList= rm.list_resources()
         self.scope = rm.open_resource(visaadder)
