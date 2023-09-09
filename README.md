@@ -2,9 +2,9 @@
 Visa drivers for my and your instruments!
 
 # compatible instruments  
-instrument| type of instrument | manufaturer | compatible |tested connection method|remarks
-:------------ |:-------------------|:------------|:-----------| :------------| :------------| 
-DS1104| scoop              | rigol       | &check;    | tcpip| USBTMC , protocol decoders needs implementing 
+instrument| type of instrument | manufaturer | compatible |tested connection method|
+:------------ |:-------------------|:------------|:-----------| :------------| 
+DS1104| scoop              | rigol       | &check;    | tcpip|
 
 
 # todo
@@ -22,4 +22,8 @@ This list wil grow with the project
 - [ ] write the decoder funtions once a protocol decoder hase been aquired
     
 - [ ] added display and IEEE commands 
+
+- [ ] add something that I have forgoten 
+
+
 
