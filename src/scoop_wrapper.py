@@ -334,3 +334,5 @@ class scoop(object):
 
     def setLSsource1(self,channel):
         self.scope.query(":MATH:LSOURce1%s" %channel)
+    def setLSsource2(self,channel):
+        self.scope.query(":MATH:LSOURce2%s" %channel)
