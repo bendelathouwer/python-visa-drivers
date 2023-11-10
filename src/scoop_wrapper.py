@@ -340,3 +340,10 @@ class scoop(object):
         return LSsource2
     def setLSsource2(self,channel):
         self.scope.write(":MATH:LSOUrce2 CHAN%s" %channel)
+
+    def querrymathscale(self):
+        scale = self.scope.query(":MATH:SCALe?")
+        return scale
+
+    def setmathscale(self, scale):
+        self.scope.write(":MATH:SCALe %s" % scale)
