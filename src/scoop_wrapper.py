@@ -347,3 +347,9 @@ class scoop(object):
 
     def setmathscale(self, scale):
         self.scope.write(":MATH:SCALe %s" % scale)
+    def querrymathoffset(self):
+        scale = self.scope.query(":MATH:OFFSet? ")
+        return scale
+
+    def setmathsoffset(self, scale):
+        self.scope.write(" :MATH:OFFSet %s" %scale)
