@@ -4,7 +4,7 @@ import time
 rm = pyvisa.ResourceManager()
 class scoop(object):
     # TODO: make the error handeling better
-    # TODO: add usb and usbtmc supor
+    # TODO: add usb and usbtmc suport
     def __init__(self,visaadder):
         self.visaInstrList= rm.list_resources()
         self.scope = rm.open_resource(visaadder)
@@ -16,13 +16,13 @@ class scoop(object):
         else:
             print("Identification string: '%s'" % idn_string)
         self.scope.timeout = 20000
-    def autoscale(self):#autoscales the scoop trace on any channel
+    def autoscale(self):
         self.scope.write(":AUT")
-    def clearscoop(self):#clears the traces in single run mode from the display
+    def clearscoop(self):
         self.scope.write(":CLE")
-    def scooprun(self):#sets the scope  in run mode
+    def scooprun(self):
         self.scope.write(":RUN")
-    def scoopstop(self):#sets the scope  in stop mode
+    def scoopstop(self):
         self.scope.write(":STOP")
     def singlecapture(self):
         self.scope.write(":SING")
