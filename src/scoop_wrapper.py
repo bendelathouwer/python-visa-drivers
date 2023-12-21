@@ -51,6 +51,7 @@ class scoop(object):
         return samplerate
     def startcal(self):
         print("DISCONECT EVERYTHING!")
+        sleep(5000)
         self.scope.write(":CAL:STAR")
     def stopcal(self):
         self.scope.write(":CAL:QUIT")
@@ -359,3 +360,33 @@ class scoop(object):
 
     def setmathinverd(self, invert):
         self.scope.write(" :MATH:INVert %s" %invert)
+    #code from here on out needs to be tested
+    def mathreset(self):#needs testing
+        self.scope.write(":MATH:RESet")
+    def querryFFTsource(self):
+        fftsource=self.scope.query(":MATH:FFT:SOURce?")
+        return fftsource
+    def setFFTsource(self,source):
+        self.scope.write(":MATH:FFT:SOURce %s" %source)
+    def querryFFTwindow(self):
+        fftwindow=self.scope.query(":MATH:FFT:WINDow?")
+        return fftwindow
+    def setFFTwindow(self,window):
+        self.scope.write(":MATH:FFT:WINDow %s" %window)
+    def querryFFTsplitwindow(self):
+        fftsplitwindow = self.scope.query(":MATH:FFT:SPLit?")
+        return fftsplitwindow
+    def setFFTsplitwindow(self,split):
+        self.scope.write(" :MATH:FFT:SPLit %s" %split)
+    def querryFFTunit(self):
+       fftunit = self.scope.query("MATH:FFT:UNIT?")
+       return fftunit
+    def setFFTunit(self,unit):
+        self.scope.write(" :MATH:FFT:UNIT %s" %unit)
+    def querryFFThorscale(self):
+        ffthorschale = self.scope.query(":MATH:FFT:HSCale?")
+        return ffthorschale
+    def setFFThorscale(self,horscale):
+        self.scope.write(":MATH:FFT:HSCale %s" %horscale)
+
+
