@@ -389,4 +389,32 @@ class scoop(object):
     def setFFThorscale(self,horscale):
         self.scope.write(":MATH:FFT:HSCale %s" %horscale)
 
+    def querryFFTCenter(self):
+        self.scope.query(":MATH:FFT:HCENter?")
+    def setfftFFTCenter(self,centerFrequency):
+        self.scope.write(":MATH:FFT:HCENter %s" %centerFrequency)
+    def querryFFTMode(self):
+        self.scope.query(":MATH:FFT:MODE?")
+    def setFFTMode(self,mode):
+        self.scope.write(":MATH:FFT:MODE %s" %mode)
 
+    def querrymathfiltertype(self):
+        self.scope.query(":MATH:FILTer:TYPE?")
+    def setmathfiltertype(self,filtertype):
+        self.scope.write(":MATH:FILTer:TYPE %s" %filtertype)
+    def querrymathCutoff1(self):
+        self.scope.query(":MATH:FILTer:W1?")
+    def setmathcutoff1(self,cutoffFrequency1):
+        self.scope.write(":MATH:FILTer:W1 %s" %cutoffFrequency1)
+    def querrymathCutoff2(self):
+        self.scope.query(":MATH:FILTer:W2?")
+    def setmathcutoff2(self,cutoffFrequency2):
+        self.scope.write(":MATH:FILTer:W2 %s" %cutoffFrequency2)
+    def querrymathstart(self):
+        self.scope.query(":MATH:OPTion:STARt?")
+    def setmathstart(self,startpoints):
+        self.scope.write("git :MATH:OPTion:STARt %s" %startpoints)
+    def querrymathend(self):
+        self.scope.query(":MATH:OPTion:END?")
+    def setmathstart(self,endpoints):
+        self.scope.write(":MATH:OPTion:END %s" %endpoints)
