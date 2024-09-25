@@ -298,7 +298,6 @@ class scoop(object):
     def querryxycursorBXalue(self):
         axvalue = self.scope.query("CURS:XY:BX?")
         return axvalue
-#---------------------------------------------------------------------
     def querryxycursorBYalue(self):
         AYvalue = self.scope.query("CURS:XY:BY?")
         return AYvalue
@@ -390,31 +389,55 @@ class scoop(object):
         self.scope.write(":MATH:FFT:HSCale %s" %horscale)
 
     def querryFFTCenter(self):
-        self.scope.query(":MATH:FFT:HCENter?")
+        fftcenter = self.scope.query(":MATH:FFT:HCENter?")
+        return fftcenter
     def setfftFFTCenter(self,centerFrequency):
         self.scope.write(":MATH:FFT:HCENter %s" %centerFrequency)
     def querryFFTMode(self):
-        self.scope.query(":MATH:FFT:MODE?")
+        fftmode=self.scope.query(":MATH:FFT:MODE?")
+        return fftmode
     def setFFTMode(self,mode):
         self.scope.write(":MATH:FFT:MODE %s" %mode)
 
     def querrymathfiltertype(self):
-        self.scope.query(":MATH:FILTer:TYPE?")
+       filtertype = self.scope.query(":MATH:FILTer:TYPE?")
+       return filtertype
     def setmathfiltertype(self,filtertype):
         self.scope.write(":MATH:FILTer:TYPE %s" %filtertype)
     def querrymathCutoff1(self):
-        self.scope.query(":MATH:FILTer:W1?")
+        cutoff1 = self.scope.query(":MATH:FILTer:W1?")
+        return cutoff1
     def setmathcutoff1(self,cutoffFrequency1):
         self.scope.write(":MATH:FILTer:W1 %s" %cutoffFrequency1)
     def querrymathCutoff2(self):
-        self.scope.query(":MATH:FILTer:W2?")
+       cutoff2 =  self.scope.query(":MATH:FILTer:W2?")
+       return cutoff2
     def setmathcutoff2(self,cutoffFrequency2):
         self.scope.write(":MATH:FILTer:W2 %s" %cutoffFrequency2)
     def querrymathstart(self):
-        self.scope.query(":MATH:OPTion:STARt?")
+        start = self.scope.query(":MATH:OPTion:STARt?")
+        return start
     def setmathstart(self,startpoints):
-        self.scope.write("git :MATH:OPTion:STARt %s" %startpoints)
+        self.scope.write(":MATH:OPTion:STARt %s" %startpoints)
     def querrymathend(self):
-        self.scope.query(":MATH:OPTion:END?")
+        end = self.scope.query(":MATH:OPTion:END?")
+        return end
     def setmathstart(self,endpoints):
         self.scope.write(":MATH:OPTion:END %s" %endpoints)
+    def querrymathinvert(self):
+        invert = self.scope.query(":MATH:OPTion:INVert?")
+        return invert
+    def setmathinvert(self,setinvert):
+        self.scope.write("::MATH:OPTion:INVert %s" %setinvert)
+    def querrymathopionsens(self):
+        sensoptions = self.scope.query(":MATH:OPTion:SENSitivity?")
+        return sensoptions
+    def setmathoptionsens(self,senstivity): # find a way to check if the step of 0.8 is  ok
+        if senstivity>0.96:#if sensitivity is higer then 0.96 snap to 0,96
+            senstivity=0.96
+        self.scope.write(":MATH:OPTion:SENSitivity %s" %senstivity)
+    def querrymathdistance(self):
+        distance = self.scope.query(":MATH:OPTion:DIStance?")
+        return distance
+#needs git commiting and pushing
+
