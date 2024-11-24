@@ -542,7 +542,33 @@ class scoop(object):
         return masktotal
     def setmaskreset(self):
         self.scope.write(":MASK:RESet")
+    def querrymeasurmentsource(self):
+        measurmentsource = self.scope.query(":MEASure:SOURce?")
+        return measurmentsource
+    def setmeasurmentsource(self,measurmentsource):
+        self.scope.write(":MEASure:SOURce %s" % measurmentsource)
+    def querrymeasurmentsource(self):
+        measurmentcountersource = self.scope.query(":MEASure:COUNter:SOURce?")
+        return measurmentcountersource
+    def setmeasurmentsource(self,measurmentcountersource):
+        self.scope.write(":MEASure:COUNter:SOURce  %s" % measurmentcountersource)
+    def querrymeasurmentcountervalue(self):
+        countervalue = self.scope.query(":MEASure:COUNter:VALue?")
+        if countervalue == 0:
+            return "counter not enabbled" # need other divices to test this
+        return countervalue + "Hz"
+    def setmeasurementclear(self,clearitem):
+        self.scope.write(":MEASure:CLEar %s" % clearitem)
+
+    def setmeasurementrecover(self,recoveritem):
+        self.scope.write(":MEASure:RECover %s" % recoveritem)
+
+
+
+
+
 
     # commit and push here
+
 
 
