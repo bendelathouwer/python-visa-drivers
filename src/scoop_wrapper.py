@@ -529,6 +529,19 @@ class scoop(object):
         if masky > 5.12:
             masky = 5.12
         self.scope.write(":MASK:Y %s" % masky)
+    def setcreatemask(self):
+        self.scope.write(":MASK:CREate")
+    def querrymaskpased(self):
+        maskepassed = self.scope.query(":MASK:PASSed?")
+        return maskepassed
+    def querrymaskfailed(self):
+        maskefailed = self.scope.query(":MASK:FAILed??")
+        return maskefailed
+    def querrymasktotal(self):
+        masktotal = self.scope.query(":MASK:TOTal?")
+        return masktotal
+    def setmaskreset(self):
+        self.scope.write(":MASK:RESet")
 
     # commit and push here
 
