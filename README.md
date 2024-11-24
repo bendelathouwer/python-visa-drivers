@@ -23,6 +23,8 @@ This list wil grow with the project
     
 - [ ] added display and IEEE commands 
 
+- [ ] implement soft limits 
+
 - [ ] add something that I have forgoten 
 
 

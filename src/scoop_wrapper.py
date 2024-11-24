@@ -5,6 +5,7 @@ rm = pyvisa.ResourceManager()
 class scoop(object):
     # TODO: make the error handeling better
     # TODO: add usb and usbtmc suport
+    # TODO implement soft limits => more compatebility
     def __init__(self,visaadder):
         self.visaInstrList= rm.list_resources()
         self.scope = rm.open_resource(visaadder)
@@ -439,5 +440,96 @@ class scoop(object):
     def querrymathdistance(self):
         distance = self.scope.query(":MATH:OPTion:DIStance?")
         return distance
-#needs git commiting and pushing
+
+    def setotpiondistance (self,distance):
+        if distance >201:  # if sensitivity is higer then 0.96 snap to 0,96
+            distance = 201
+        if distance < 3:
+            distance =3
+        self.scope.write(":MATH:OPTion:DIStance? %s" % distance)
+    def querrymathautoscale(self):
+        mathautoschale=self.scope.query(":MATH:OPTion:ASCale?")
+        return mathautoschale
+    def setmathautoscale(self,autoscale):
+        self.scope.write(":MATH:OPTion:ASCale? %s" % autoscale)
+    def querrymathlogictreshold1(self):
+        logictreshhold1 = self.scope.query(":MATH:OPTion:THReshold1?")
+        return logictreshhold1
+    def setmathlogichtreshold1(self,logictreshold1):
+        self.scope.write(" :MATH:OPTion:THReshold1 %s" %logictreshold1)
+    def querrymathlogictreshold2(self):
+        logictreshhold2 = self.scope.query(":MATH:OPTion:THReshold2?")
+        return logictreshhold2
+    def setmathlogichtreshold2(self,logictreshold2):
+        self.scope.write(" :MATH:OPTion:THReshold2 %s" %logictreshold2)
+    def querrymathfxsource1(self):
+        mathfxsource1 = self.scope.query(":MATH:OPTion:FX:SOURce1?")
+        return mathfxsource1
+    def setmathfxsource1(self,fxsource1):
+        self.scope.write("MATH:OPTion:FX:SOURce1 %s" %fxsource1)
+
+    def querrymathfxsource2(self):
+        mathfxsource2 = self.scope.query(":MATH:OPTion:FX:SOURce2?")
+        return mathfxsource1
+
+    def setmathfxsource1(self, fxsource2):
+        self.scope.write("MATH:OPTion:FX:SOURce2 %s" % fxsource2)
+    def querymathfxoperator(self):
+        mathfxoperator = self.scope.query(":MATH:OPTion:FX:OPERator?")
+        return mathfxoperator
+    def setmathfxoperator(self,fxoperator):
+        self.scope.write(":MATH:OPTion:FX:OPERator%s" %fxoperator)
+    def querrymaskenable(self):
+        maskenabled = self.scope.query(":MASK:ENABle?")
+        return maskenabled
+    def setmaskeenable(self,maskenabled):
+        self.scope.write(":MASK:ENABle %s" %maskenabled)
+    def querrymasksource(self):
+        masksource = self.scope.query(":MASK:SOURce?")
+        return masksource
+    def setmasksource (self,masksource):
+        self.scope.write(" :MASK:SOURce %s" %masksource)
+    def querrymaskoperating(self):
+        maskoperating = self.scope.query(":MASK:OPERate?")
+        return maskoperating
+    def setmaskoperating(self, maskoperating):
+        self.scope.write(":MASK:OPERate %s" %maskoperating)
+    def querrymaskstats(self):
+        maskstats = self.scope.query(":MASK:MDISplay?")
+        return maskstats
+    def setmaskstats(self,maskstats):
+        self.scope.write(":MASK:MDISpl %s"%maskstats)
+    def querrymaskstoponfail(self):
+        stoponfail = self.scope.query(":MASK:SOOutput?")
+        return stoponfail
+    def setmaskstoponfail(self,stoponfail):
+        self.scope.write(":MASK:SOOutput %s" %stoponfail)
+    def querrymaskoutput(self):
+        maskoutput = self.scope.query(":MASK:OUTPut?")
+        return maskoutput
+    def setmaskoutput(self,maskoutput):
+        self.scope.write(":MASK:OUTPut %s"%maskoutput)
+    def querrymaskx(self):
+        maskx = self.scope.query(":MASK:X?")
+        return maskx
+    def setmaskx(self,maskx):
+        if maskx<0.02:
+            maskx=0.02
+        if maskx>4:
+            maskx=4
+        self.scope.write(":MASK:X %s" %maskx)
+
+    def querrymasky(self):
+        masky = self.scope.query(":MASK:Y?")
+        return masky
+
+    def setmaskx(self, masky):
+        if masky < 0.04:
+            masky = 0.04
+        if masky > 5.12:
+            masky = 5.12
+        self.scope.write(":MASK:Y %s" % masky)
+
+    # commit and push here
+
 
