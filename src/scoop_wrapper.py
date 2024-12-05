@@ -563,10 +563,49 @@ class scoop(object):
     def setmeasurementrecover(self,recoveritem):
         self.scope.write(":MEASure:RECover %s" % recoveritem)
 
+    def querrymeasureall(self):
+        allmeasurmentenabled = self.scope.query(":MEASure:ADISplay?")
+        return allmeasurmentenabled
+    def setmeasurmentall(self,enable):
+        self.scope.write(":MEASure:ADISplay %s" % enable)
+    def querrymesurmentallsource(self):
+        measurmentallsource = self.scope.query(":MEASure:AMSource?")
+        return measurmentallsource
+    #test multipe inputs and try to catch them aka make it work
+    def setmeasurmentallsource(self,source):
+        self.scope.write("MEASure:AMSource %s" %source)
 
+    def querrymeasuremax(self):
+        setupmax = self.scope.query(":MEASure:SETup:MAX?")
+        return setupmax
+    def setmeasurmentmax(self,setupmax ):
+        if setupmax <7:
+            setupmax == 7
+        if setupmax>95:
+            setupmax == 95
+        self.scope.write(":MEASure:SETup:MAX %s"%setupmax)
 
+    def querrymeasuremid(self):
+        setupmid= self.scope.query(":MEASure:SETup:MID?")
+        return setupmid
 
+    def setmeasurmentmid(self, setupmid):
+        if setupmax < 6:
+            setupmax == 5
+        if setupmax > 94:
+            setupmax == 94
+        self.scope.write(":MEASure:SETup:MID %s" % setupmid)
 
+    def querrymeasuremin(self):
+        setupmin = self.scope.query(":MEASure:SETup:MIN?")
+        return setupmin
+
+    def setmeasurmentmin(self, setupmin):
+        if setupmin < 5:
+            setupmin == 5
+        if setupmin > 93:
+            setupmin == 93
+        self.scope.write(":MEASure:SETup:MIN %s" % setupmin)
 
     # commit and push here
 
