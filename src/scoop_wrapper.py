@@ -1,3 +1,5 @@
+from cmath import phase
+
 import pyvisa
 import sys
 import time
@@ -606,7 +608,18 @@ class scoop(object):
         if setupmin > 93:
             setupmin == 93
         self.scope.write(":MEASure:SETup:MIN %s" % setupmin)
+    def querryphasemeasurmentsourcea(self):
+        phasesoursea = self.scope.query(":MEASure:SETup:PSA?")
+        return phasesoursea
+    def setphasemeasurmentsourcea(self,phasesourcea):
+        self.scope.write(":MEASure:SETup:PSA %" %phasesourcea)
 
+    def querryphasemeasurmentsourceb(self):
+        phasesoursea = self.scope.query(":MEASure:SETup:PSB?")
+        return phasesoursea
+
+    def setphasemeasurmentsourceb(self, phasesourceb):
+        self.scope.write(":MEASure:SETup:PSB %" % phasesourceb)
     # commit and push here
 
 
