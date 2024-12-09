@@ -472,7 +472,7 @@ class scoop(object):
 
     def querrymathfxsource2(self):
         mathfxsource2 = self.scope.query(":MATH:OPTion:FX:SOURce2?")
-        return mathfxsource1
+        return mathfxsource2
 
     def setmathfxsource1(self, fxsource2):
         self.scope.write("MATH:OPTion:FX:SOURce2 %s" % fxsource2)
@@ -592,10 +592,10 @@ class scoop(object):
         return setupmid
 
     def setmeasurmentmid(self, setupmid):
-        if setupmax < 6:
-            setupmax == 5
-        if setupmax > 94:
-            setupmax == 94
+        if setupmid < 6:
+            setupmid == 5
+        if setupmid > 94:
+            setupmid == 94
         self.scope.write(":MEASure:SETup:MID %s" % setupmid)
 
     def querrymeasuremin(self):
