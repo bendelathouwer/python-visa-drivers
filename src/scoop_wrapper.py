@@ -620,6 +620,19 @@ class scoop(object):
 
     def setphasemeasurmentsourceb(self, phasesourceb):
         self.scope.write(":MEASure:SETup:PSB %" % phasesourceb)
+
+    def querrymeasurmentdelaysourcea(self):
+        delaysourcea = self.scope.query(":MEASure:SETup:DSA?")
+        return delaysourcea
+    def setmeasurmentdelaysourcea(self,delaysourcea):
+        self.scope.write(":MEASure:SETup:DSA %" %delaysourcea)
+
+    def querrymeasurmentdelaysourceb(self):
+        delaysourceb = self.scope.query(":MEASure:SETup:DSB?")
+        return delaysourceb
+
+    def setmeasurmentdelaysourceb(self, delaysourceb):
+        self.scope.write(":MEASure:SETup:DSB %" % delaysourceb)
     # commit and push here
 
 
