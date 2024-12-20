@@ -633,6 +633,19 @@ class scoop(object):
 
     def setmeasurmentdelaysourceb(self, delaysourceb):
         self.scope.write(":MEASure:SETup:DSB %" % delaysourceb)
+    def querrymeasurmentstatdisplay(self):
+        statusdisplay = self.scope.query(":MEASure:STATistic:DISPlay?")
+        return statusdisplay
+    def setmeasurmentstatdesplay(self,statusdisplay):
+        self.scope.write(":MEASure:STATistic:DISPlay %" %statusdisplay)
+    def querrymeasurmentstatmode(self):
+        statmode = self.scope.query(":MEASure:STATistic:MODE? ")
+        return statmode
+    def setmeasurmentstatmode(self,statmode):
+        self.scope.write(":MEASure:STATistic:MODE %" %statmode)
+    def measurmentstatreset(self):
+        self.scope.write(":MEASure:STATistic:RESet")
+    
     # commit and push here
 
 
