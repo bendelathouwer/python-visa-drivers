@@ -646,7 +646,7 @@ class scoop(object):
         self.scope.write(":MEASure:STATistic:MODE %" %statmode)
     def measurmentstatreset(self):
         self.scope.write(":MEASure:STATistic:RESet")
-    
+    #:WAVeform:DATA?
     # commit and push here
 
 
