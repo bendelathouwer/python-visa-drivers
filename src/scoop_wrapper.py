@@ -7,6 +7,7 @@ rm = pyvisa.ResourceManager()
 class scoop(object):
     # TODO: make the error handeling better
     # TODO: add usb and usbtmc suport
+    # TODO add gpib suport
     # TODO implement soft limits => more compatebility
     def __init__(self,visaadder):
         self.visaInstrList= rm.list_resources()
