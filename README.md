@@ -15,6 +15,8 @@ This list wil grow with the project
 
 - [ ] write a usbTMC wrapper which works alongside the tcpip code 
 
+- [ ] write a gpib wrapper which works alongside the tcpip code
+
 - [ ] implement error handeling 
 
 - [ ] clean up the code
