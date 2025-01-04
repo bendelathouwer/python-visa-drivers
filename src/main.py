@@ -1,0 +1,8 @@
+import scoop_wrapper
+import matplotlib.pyplot as plt
+import numpy as np
+data= []
+scoop=scoop_wrapper.scoop("TCPIP0::169.254.226.8::INSTR")
+data = scoop.takemeasurement("CHAN1","NORMal","ASCii")
+print(data)
+print(type(data))

@@ -653,8 +653,8 @@ class scoop(object):
         self.scope.write( ":WAVeform:FORMat %s " % form)
 
         waveformdata = self.scope.query(":WAVeform:DATA?")
-
-        return waveformdata
+        newwaveformdata = waveformdata[11:] #removes the first element because it's  not part of the data
+        return newwaveformdata
 
     # commit and push here
 
