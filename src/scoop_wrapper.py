@@ -5,6 +5,7 @@ import sys
 import time
 rm = pyvisa.ResourceManager()
 class scoop(object):
+
     # TODO: make the error handeling better
     # TODO: add usb and usbtmc suport
     # TODO add gpib suport
@@ -55,7 +56,7 @@ class scoop(object):
         return samplerate
     def startcal(self):
         print("DISCONECT EVERYTHING!")
-        sleep(5000)
+        self.scope.timeout(5000)
         self.scope.write(":CAL:STAR")
     def stopcal(self):
         self.scope.write(":CAL:QUIT")
@@ -646,7 +647,15 @@ class scoop(object):
         self.scope.write(":MEASure:STATistic:MODE %" %statmode)
     def measurmentstatreset(self):
         self.scope.write(":MEASure:STATistic:RESet")
-    #:WAVeform:DATA?
+    def takemeasurement(self,channel,mode,form):
+        self.scope.write(":WAVeform:SOURce %s" %channel)
+        self.scope.write(":WAVeform:MODE %s" %mode)
+        self.scope.write( ":WAVeform:FORMat %s " % form)
+
+        waveformdata = self.scope.query(":WAVeform:DATA?")
+
+        return waveformdata
+
     # commit and push here
 
 
