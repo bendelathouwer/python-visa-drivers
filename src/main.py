@@ -11,6 +11,6 @@ print(type(data))
 print(len(data))
 t = np.arange(0, len(data))
 fig, ax = plt.subplots()             # Create a figure containing a single Axes.
-ax.plot([t], [data])  # Plot some data on the Axes.
+ax.plot([data], [len(data)])  # Plot some data on the Axes.
 plt.show()
 
