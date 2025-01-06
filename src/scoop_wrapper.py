@@ -1,5 +1,5 @@
 from cmath import phase
-
+import numpy
 import pyvisa
 import sys
 import time
@@ -7,8 +7,7 @@ rm = pyvisa.ResourceManager()
 class scoop(object):
 
     # TODO: make the error handeling better
-    # TODO: add usb and usbtmc suport
-    # TODO add gpib suport
+    # TODO: add usb,usbtmc and gpib suport
     # TODO implement soft limits => more compatebility
     def __init__(self,visaadder):
         self.visaInstrList= rm.list_resources()
@@ -201,7 +200,6 @@ class scoop(object):
         return bxvalue
     def setcursortracBX(self, value):
         self.scope.write("CURSor:TRACk:BX %s " % value)
-
     #these functions needs  understanding
     def querrycursortrackAY(self):
         ayvalue = self.scope.query("CURSor:TRACk:AY? ")
@@ -653,7 +651,11 @@ class scoop(object):
         self.scope.write( ":WAVeform:FORMat %s " % form)
 
         waveformdata = self.scope.query(":WAVeform:DATA?")
-        newwaveformdata = waveformdata[11:] #removes the first element because it's  not part of the data
+
+        # removes the first element (the first 11 caracters)
+        # it's  not part of the data
+        #  aranges the elements evenly using numpy arange
+        newwaveformdata = np.arange(waveformdata[11:])
         return newwaveformdata
 
     # commit and push here
