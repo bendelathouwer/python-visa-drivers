@@ -8,3 +8,8 @@ data = scoop.takemeasurement("CHAN1","NORMal","ASCii")
 print(data)
 print(type(data))
 print(len(data))
+newdata=data[11:len(data)]
+print(newdata)
+ax,fig =plt.subplots()
+plt.plot([len(newdata)],[newdata])
+plt.show()

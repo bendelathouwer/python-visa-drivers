@@ -652,8 +652,8 @@ class scoop(object):
         waveformdata = self.scope.query(":WAVeform:DATA?")
         # removes the first element (the first 11 caracters)
         # it's  not part of the dat
-        newwaveformdata = waveformdata[11:]
-        return newwaveformdata
+        #newwaveformdata = waveformdata[11:]
+        return waveformdata
 
     # commit and push here
 
