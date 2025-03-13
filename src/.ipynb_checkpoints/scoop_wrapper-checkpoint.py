@@ -651,8 +651,8 @@ class scoop(object):
         self.scope.write( ":WAVeform:FORMat %s " % form)
         waveformdata = self.scope.query(":WAVeform:DATA?")
         # removes the first element (the first 11 caracters)
-        # it's  not part of the data
-        newwaveformdata =  np.array(waveformdata[11:])
+        # it's  not part of the dat
+        newwaveformdata = np.asarray( waveformdata[11:])
         return newwaveformdata
 
     # commit and push here
