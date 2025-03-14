@@ -2,9 +2,11 @@
 import scoop_wrapper
 import matplotlib.pyplot as plt
 import numpy as np
-
+data = []
 scoop=scoop_wrapper.scoop("TCPIP0::169.254.226.9::INSTR")
-x,data= scoop.takemeasurement("CHAN1","NORMal","ASCii")
-index= np.nditer(data)
-plt.plot(x,data)
+data= scoop.takemeasurement("CHAN1","NORMal","ASCii")
+print(data)
+print(type(data))
+print(len(data))
+plt.plot(np.arange(data),data)
 plt.show()
