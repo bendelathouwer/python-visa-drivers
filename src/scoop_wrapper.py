@@ -649,10 +649,12 @@ class scoop(object):
         self.scope.write(":WAVeform:SOURce %s" %channel)
         self.scope.write(":WAVeform:MODE %s" %mode)
         self.scope.write( ":WAVeform:FORMat %s " % form)
+        waveformdata = []
         waveformdata = self.scope.query(":WAVeform:DATA?")
         # removes the first element (the first 11 caracters)
         # it's  not part of the data
-        newwaveformdata =( waveformdata[11:])
+
+        newwaveformdata = np.fromstring(waveformdata[11:], sep=",")
         return newwaveformdata
 
     # commit and push here
