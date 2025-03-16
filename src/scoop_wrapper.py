@@ -654,7 +654,8 @@ class scoop(object):
         # removes the first element (the first 11 caracters)
         # it's  not part of the data
 
-        newwaveformdata = np.fromstring(waveformdata[11:], sep=",")
+        newwaveformdata = np.fromstring(waveformdata[11:], sep=",")#parses string to a 1d  numpy array
+        #separates on a given seperator
         return newwaveformdata
 
     # commit and push here
