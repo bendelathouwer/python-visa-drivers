@@ -645,6 +645,7 @@ class scoop(object):
         self.scope.write(":MEASure:STATistic:MODE %" %statmode)
     def measurmentstatreset(self):
         self.scope.write(":MEASure:STATistic:RESet")
+
     def takemeasurement(self,channel,mode,form):
         self.scope.write(":WAVeform:SOURce %s" %channel)
         self.scope.write(":WAVeform:MODE %s" %mode)
@@ -658,7 +659,7 @@ class scoop(object):
         #separates on a given seperator
         return newwaveformdata
 
-    # commit and push here
+
 
 
 
