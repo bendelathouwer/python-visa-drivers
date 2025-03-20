@@ -1,5 +1,7 @@
 PyVISA~=1.14.1
 matplotlib ~= 3.10.0
 numpy ~= 2.2.1
+sqlalchemy_utils ~=0.41.2
+pymysql ~= 1.1.1
 sqlalchemy ~= 2.0.39
 
