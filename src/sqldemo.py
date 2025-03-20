@@ -14,12 +14,17 @@ connection = engine.connect()
 
 #creates table with the folowing "settings", any variable settings (float,int etc needs to be imported form the lib )
 test_table=Table("scope",meta,Column("id", Integer, primary_key=True),
-Column("sample", Integer),
 Column("voltage", Float))
 meta.create_all(engine)
 
 scoop=scoop_wrapper.scoop("TCPIP0::169.254.226.9::INSTR")#connects to the scope over lan using these values
 data= scoop.takemeasurement("CHAN1","NORMal","ASCii")
+#inserts data in the database from the measurments
+for i in range(len(data)):
+    stmt =  insert(test_table).values(voltage = data[i])
+    with engine.connect() as conn:
+        result = conn.execute(stmt)
+        conn.commit()
 
 plt.plot(data)
 plt.show()
