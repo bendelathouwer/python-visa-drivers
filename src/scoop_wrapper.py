@@ -486,34 +486,46 @@ class scoop(object):
         return maskenabled
     def setmaskeenable(self,maskenabled):
         self.scope.write(":MASK:ENABle %s" %maskenabled)
+
     def querrymasksource(self):
         masksource = self.scope.query(":MASK:SOURce?")
         return masksource
+
     def setmasksource (self,masksource):
         self.scope.write(" :MASK:SOURce %s" %masksource)
+
     def querrymaskoperating(self):
         maskoperating = self.scope.query(":MASK:OPERate?")
         return maskoperating
+
     def setmaskoperating(self, maskoperating):
         self.scope.write(":MASK:OPERate %s" %maskoperating)
+
     def querrymaskstats(self):
         maskstats = self.scope.query(":MASK:MDISplay?")
         return maskstats
+
     def setmaskstats(self,maskstats):
         self.scope.write(":MASK:MDISpl %s"%maskstats)
+
     def querrymaskstoponfail(self):
         stoponfail = self.scope.query(":MASK:SOOutput?")
         return stoponfail
+
     def setmaskstoponfail(self,stoponfail):
         self.scope.write(":MASK:SOOutput %s" %stoponfail)
+
     def querrymaskoutput(self):
         maskoutput = self.scope.query(":MASK:OUTPut?")
         return maskoutput
+
     def setmaskoutput(self,maskoutput):
         self.scope.write(":MASK:OUTPut %s"%maskoutput)
+
     def querrymaskx(self):
         maskx = self.scope.query(":MASK:X?")
         return maskx
+
     def setmaskx(self,maskx):
         if maskx<0.02:
             maskx=0.02
@@ -531,34 +543,45 @@ class scoop(object):
         if masky > 5.12:
             masky = 5.12
         self.scope.write(":MASK:Y %s" % masky)
+
     def setcreatemask(self):
         self.scope.write(":MASK:CREate")
+
     def querrymaskpased(self):
         maskepassed = self.scope.query(":MASK:PASSed?")
         return maskepassed
+
     def querrymaskfailed(self):
         maskefailed = self.scope.query(":MASK:FAILed??")
         return maskefailed
+
     def querrymasktotal(self):
         masktotal = self.scope.query(":MASK:TOTal?")
         return masktotal
+
     def setmaskreset(self):
         self.scope.write(":MASK:RESet")
+
     def querrymeasurmentsource(self):
         measurmentsource = self.scope.query(":MEASure:SOURce?")
         return measurmentsource
+
     def setmeasurmentsource(self,measurmentsource):
         self.scope.write(":MEASure:SOURce %s" % measurmentsource)
+
     def querrymeasurmentsource(self):
         measurmentcountersource = self.scope.query(":MEASure:COUNter:SOURce?")
         return measurmentcountersource
+
     def setmeasurmentsource(self,measurmentcountersource):
         self.scope.write(":MEASure:COUNter:SOURce  %s" % measurmentcountersource)
+
     def querrymeasurmentcountervalue(self):
         countervalue = self.scope.query(":MEASure:COUNter:VALue?")
         if countervalue == 0:
             return "counter not enabbled" # need other divices to test this
         return countervalue + "Hz"
+
     def setmeasurementclear(self,clearitem):
         self.scope.write(":MEASure:CLEar %s" % clearitem)
 
@@ -568,11 +591,14 @@ class scoop(object):
     def querrymeasureall(self):
         allmeasurmentenabled = self.scope.query(":MEASure:ADISplay?")
         return allmeasurmentenabled
+
     def setmeasurmentall(self,enable):
         self.scope.write(":MEASure:ADISplay %s" % enable)
+
     def querrymesurmentallsource(self):
         measurmentallsource = self.scope.query(":MEASure:AMSource?")
         return measurmentallsource
+
     #test multipe inputs and try to catch them aka make it work
     def setmeasurmentallsource(self,source):
         self.scope.write("MEASure:AMSource %s" %source)
@@ -580,6 +606,7 @@ class scoop(object):
     def querrymeasuremax(self):
         setupmax = self.scope.query(":MEASure:SETup:MAX?")
         return setupmax
+
     def setmeasurmentmax(self,setupmax ):
         if setupmax <7:
             setupmax == 7
@@ -633,16 +660,21 @@ class scoop(object):
 
     def setmeasurmentdelaysourceb(self, delaysourceb):
         self.scope.write(":MEASure:SETup:DSB %" % delaysourceb)
+
     def querrymeasurmentstatdisplay(self):
         statusdisplay = self.scope.query(":MEASure:STATistic:DISPlay?")
         return statusdisplay
+
     def setmeasurmentstatdesplay(self,statusdisplay):
         self.scope.write(":MEASure:STATistic:DISPlay %" %statusdisplay)
+
     def querrymeasurmentstatmode(self):
         statmode = self.scope.query(":MEASure:STATistic:MODE? ")
         return statmode
+
     def setmeasurmentstatmode(self,statmode):
         self.scope.write(":MEASure:STATistic:MODE %" %statmode)
+
     def measurmentstatreset(self):
         self.scope.write(":MEASure:STATistic:RESet")
 
