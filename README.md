@@ -1,4 +1,4 @@
-![pylinter](https://github.com/bendelathouwer/python-visa-drivers/blob/main/.github/workflows/pylint.yml/badge.svg)
+
 # Python visa drivers
 [Visa drivers](https://www.ni.com/docs/en-US/bundle/ni-visa/page/ni-visa-overview.html) for my and your instruments!
 
