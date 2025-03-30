@@ -1,5 +1,5 @@
 # Python visa drivers
-Visa drivers for my and your instruments!
+[Visa drivers](https://www.ni.com/docs/en-US/bundle/ni-visa/page/ni-visa-overview.html) for my and your instruments!
 
 # Compatible instruments  
 Instrument| Type of instrument | Manufaturer | Compatible |Tested connection method|
@@ -12,8 +12,8 @@ Here you will find a list of what still needs to be done.
 This list wil grow with the project 
 
 - [ ] write a read me and wiki
-- [ ] write a usbTMC wrapper which works alongside the tcpip code 
-- [ ] write a gpib wrapper which works alongside the tcpip code
+- [ ] write a USBTMC wrapper which works alongside the tcpip code 
+- [ ] write a GPIB wrapper which works alongside the tcpip code
 - [ ] implement error handeling 
 - [ ] clean up the code
 - [ ] write the decoder funtions once a protocol decoder hase been aquired
