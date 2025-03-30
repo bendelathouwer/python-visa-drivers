@@ -356,9 +356,16 @@ class scoop(object):
 
     def setmathsoffset(self, scale):
         self.scope.write(" :MATH:OFFSet %s" %scale)
+
+
+
+
     def querrymathinverd(self):
+        """querys the"""
         invert = self.scope.query(":MATH:INVert? ")
         return invert
+
+
 
     def setmathinverd(self, invert):
         self.scope.write(" :MATH:INVert %s" %invert)
@@ -476,6 +483,7 @@ class scoop(object):
 
     def setmathfxsource1(self, fxsource2):
         self.scope.write("MATH:OPTion:FX:SOURce2 %s" % fxsource2)
+
     def querymathfxoperator(self):
         mathfxoperator = self.scope.query(":MATH:OPTion:FX:OPERator?")
         return mathfxoperator

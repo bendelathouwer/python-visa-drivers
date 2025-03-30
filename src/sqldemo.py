@@ -1,7 +1,7 @@
 import sqlalchemy as db
 from sqlalchemy import *
 from sqlalchemy_utils import *
-import scoop_wrapper
+import scope_wrapper
 import matplotlib.pyplot as plt
 
 
