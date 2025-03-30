@@ -19,5 +19,6 @@ This list wil grow with the project
 - [ ] clean up the code
 - [ ] write the decoder funtions once a protocol decoder hase been aquired
 - [ ] added display and IEEE commands 
-- [ ] implement soft limits 
+- [ ] implement soft limits
+- [ ] implement further functions as needed 
 - [ ] add something that I have forgoten 
