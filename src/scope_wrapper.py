@@ -91,7 +91,7 @@ class Scope(object):
         self.scope.write(":CAL:QUIT")
 
     def querychanelBW(self,channel):
-        
+
         channelbw = self.scope.query(":CHAN%d:BWL?"%channel)
         return channelbw
 
@@ -124,7 +124,7 @@ class Scope(object):
         offset = self.scope.query(":CHAN%d:OFFS?"%channel)
         return offset
 
-    def querychannelrange(self,channel):#TODO understand this
+    def querychannelrange(self,channel):#
         range=self.scope.query("CHAN%d:RANG? " %channel)
         return range
 
