@@ -254,7 +254,7 @@ class Scope(object):
         ixdelta = self.scope.query("CURSor:MANual:IXDELta?")
         return ixdelta
 
-    def querrymanualcursorxdelta(self):
+    def querrymanualcursorydelta(self):
         ydelta = self.scope.query("CURS:MAN:YDEL?")
         return ydelta
 
@@ -759,7 +759,7 @@ class Scope(object):
         return phasesoursea
 
     def setphasemeasurmentsourceb(self, phasesourceb):
-        self.scope.write(":MEASure:SETup:PSB %" % phasesourceb)
+        self.scope.write(":MEASure:SETup:PSB %s" % phasesourceb)
 
     def querrymeasurmentdelaysourcea(self):
         delaysourcea = self.scope.query(":MEASure:SETup:DSA?")
