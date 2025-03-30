@@ -2,7 +2,7 @@
 Visa drivers for my and your instruments!
 
 # Compatible instruments  
-instrument| type of instrument | manufaturer | compatible |tested connection method|
+Instrument| Type of instrument | Manufaturer | Compatible |Tested connection method|
 :------------ |:-------------------|:------------|:-----------| :------------| 
 DS1104| scoop              | rigol       | &check;    | tcpip|
 
