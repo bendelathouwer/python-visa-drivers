@@ -1,4 +1,4 @@
-[![Pylint](https://github.com/bendelathouwer/python-visa-drivers/actions/workflows/pylint.yml/badge.svg)](https://github.com/bendelathouwer/python-visa-drivers/actions/workflows/pylint.yml) 
+[![Pylint](https://github.com/bendelathouwer/python-visa-drivers/actions/workflows/pylint.yml/badge.svg)](https://github.com/bendelathouwer/python-visa-drivers/actions/workflows/pylint.yml)   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # Python visa drivers
 [Visa drivers](https://www.ni.com/docs/en-US/bundle/ni-visa/page/ni-visa-overview.html) for my and your instruments!
 
