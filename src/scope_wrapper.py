@@ -91,7 +91,7 @@ class Scope(object):
         self.scope.write(":CAL:QUIT")
 
     def querychanelBW(self,channel):
-
+        """query the bandwidth limit parameter of the specified channel."""
         channelbw = self.scope.query(":CHAN%d:BWL?"%channel)
         return channelbw
 
