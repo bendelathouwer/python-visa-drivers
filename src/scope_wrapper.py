@@ -1,3 +1,5 @@
+"""wraper for NI-VISA for the oscilloscope """
+
 import sys
 import numpy as np
 import pyvisa
@@ -5,12 +7,10 @@ import pyvisa
 
 rm = pyvisa.ResourceManager()
 class Scope(object):
-    """  reads in the resource string given and try's te establisch coms """
-    # TODO: make the error handeling better
-    # TODO: add usb,usbtmc and gpib suport
-    # TODO implement soft limits => more compatebility
+    """  reads in the resource string given and try's te establisch coms.
+    Also prints the connecte identifyer string """
     def __init__(self,visaadder):
-        self.visa_instrList= rm.list_resources()
+        self.visa_instr_list= rm.list_resources()
         self.scope = rm.open_resource(visaadder)
         idn_string = self.scope.query("*IDN?")
         if len(idn_string) == 0:
@@ -26,6 +26,7 @@ class Scope(object):
         self.scope.write(":AUT")
 
     def clearscope(self):
+        """Clear all the waveforms on the screen. """
         self.scope.write(":CLE")
 
     def scoperun(self):
@@ -44,48 +45,60 @@ class Scope(object):
         """forces a trigger and only works in single or normal trigger mode"""
         self.scope.write(":TFOR")
 
-    def aquirenrofavrages(self):
+    def querynrofavrages(self):
+        """querrys the number of acquisition avarages"""
         avrages=self.scope.query(":ACQ:AVER?")
         return avrages
 
     def setnrofavrages(self,nr):
-        # TODO write code to catch out of bound input
+        """sets the number of acquisition avarages"""
         self.scope.write(":ACQ:AVER %d"%nr)
 
-    def aquirememdepth(self):
+    def querymemdepth(self):
+        """querrys the number of waveformpoints that can be stored in a single trigger sample
+         The default unit is pts (points)"""
         memdepth = self.scope.query(":ACQ:MDEP?")
         return memdepth
 
     def setmemdepth(self,memmorydepth):
-        # TODO write code to catch out of bound input
+        """sets the number of waveformpoints that can be stored in a single trigger sample
+              The default unit is pts (points)"""
         self.scope.write(":ACQ:MDEP %s" % memmorydepth)
-        aquire = self.scope.query(":ACQ:TYPE?")
-        return aquire
 
-    def setaquiretype(self,type):
-        # TODO write code to catch out of bound input
-        self.scope.write(":ACQuire:TYPE %s" % type)
 
-    def aquiresamplerate(self):#TODOm
+    def queryaquiretype(self):
+        """query the acquisition mode of the oscilloscope"""
+        aquiretype = self.scope.query(":ACQ:MDEP?")
+        return aquiretype
+
+    def setaquiretype(self, aquiretype):
+        """sets the acquisition mode of the oscilloscope"""
+        self.scope.write(":ACQuire:TYPE %s" % aquiretype)
+
+    def querysamplerate(self):
+        """querrys the samplerate of the scope in samples per second and in engineering notation"""
         samplerate = self.scope.query(":ACQ:SRAT?")
         return samplerate
 
     def startcal(self):
+        """ starts the automatic callibration of the scope """
         print("DISCONECT EVERYTHING!")
         self.scope.timeout(5000)
         self.scope.write(":CAL:STAR")
 
     def stopcal(self):
+        """ stops the automatic callibration of the scope """
         self.scope.write(":CAL:QUIT")
 
-    def aquirechanelBW(self,channel):
+    def querychanelBW(self,channel):
+        
         channelbw = self.scope.query(":CHAN%d:BWL?"%channel)
         return channelbw
 
     def setchannelBW(self,channel,BW):
         self.scope.write(":CHAN%d:BWL %s " %(channel,BW))
 
-    def aquirechanelcoupling(self,channel):
+    def querychanelcoupling(self,channel):
         channelcoupling = self.scope.query(":CHAN%d:COUP?"%channel)
         return channelcoupling
 
@@ -93,121 +106,123 @@ class Scope(object):
     def setchannelcoupling(self,channel,coupling):
         self.scope.write("CHAN%d:COUP %s " %(channel,coupling))
 
-    def aquiredisplaychannel(self,channel):
+    def querydisplaychannel(self,channel):
         display = self.scope.query(":CHAN%d:DISP?"%channel)
         return display
 
     def setdisplaychannel(self,channel,status):
         self.scope.write("CHAN%d:DISP %s " %(channel,status))
 
-    def aquiredchannelinversion(self,channel):
+    def querydchannelinversion(self,channel):
         invers = self.scope.query(":CHAN%d:INV?"%channel)
         return invers
 
     def setchannelinversion(self,channel,inversion):
         self.scope.write("CHAN%d:INV %s " %(channel,inversion))
 
-    def aquiredchanneloffset(self,channel):#TODO timout opvangen
+    def querydchanneloffset(self,channel):#TODO timout opvangen
         offset = self.scope.query(":CHAN%d:OFFS?"%channel)
         return offset
 
-    def aquirechannelrange(self,channel):#TODO understand this
+    def querychannelrange(self,channel):#TODO understand this
         range=self.scope.query("CHAN%d:RANG? " %channel)
         return range
 
     def setchannelrange(self,channel,range):
         self.scope.write("CHAN%d:RANG %s " %(channel,range))
 
-    def aquirechannelcal(self,channel):#TODO understand this
+    def querychannelcal(self,channel):#TODO understand this
         cal = self.scope.query("CHAN%d:TCAL? " %channel)
         return cal
 
     def setchannelcal(self,channel,cal):
         self.scope.write("CHAN%d:TCAL %s " %(channel,cal))
 
-    def aquirechannelscale(self,channel):#TODO understand this
+    def querychannelscale(self,channel):#TODO understand this
         scale=self.scope.query("CHAN%d:SCAL? " %channel)
         return scale
 
     def setchannelscale(self,channel,scale):
         self.scope.write("CHAN%d:SCAL %s " %(channel,scale))
 
-    def aquirechannelvernier(self,channel):
+    def querychannelvernier(self,channel):
         status= self.scope.query("CHAN%d:VERN? " % channel)
         return status
     def setchannelvernier(self,channel,vernier):
+
         self.scope.write("CHAN%d:VERN %s " % (channel, vernier))
-    def aquireproberatio(self,channel):#TODO understand this
+
+    def queryproberatio(self,channel):#TODO understand this
         proberatio=self.scope.query("CHAN%d:PROB? " %channel)
         return proberatio
 
     def setproberatio(self,channel,ratio):
         self.scope.write("CHAN%d:PROB %s " %(channel,ratio))
 
-    def aquirechanelunit(self,channel):
+    def querychanelunit(self,channel):
         unit = self.scope.query("CHAN%d:UNIT? " % channel)
         return unit
 
     def setchannelunit(self,channel,unit):
         self.scope.write("CHAN%d:UNIT %s " % (channel, unit))
 
-    def querrycursormode(self):
+    def querycursormode(self):
         mode = self.scope.query("CURS:MODE?")
         return mode
 
     def setcursormode(self,mode):
         self.scope.write("CURS:MODE %s " %mode)
 
-    def querrymanualcursortype(self):
+    def querymanualcursortype(self):
         type = self.scope.query("CURS:MAN:TYPE?")
         return type
 
     def setmanualcursortype(self,cursortype):
         self.scope.write(":CURS:MAN:TYPE %s " %cursortype)
 
-    def querrymanualcursorsource(self):
+    def querymanualcursorsource(self):
         source = self.scope.query("CURS:MAN:SOUR?")
         return source
 
     def setmanualcursorsource(self,source):
         self.scope.write("CURS:MAN:SOUR %s " % source)
 
-    def querrycursorunit(self):
+    def queryycursorunit(self):
         unit = self.scope.query("CURS:MAN:TUN? ")
         return unit
 
     def setmanualcursorunit(self, unit):
         self.scope.write("CURS:MAN:TUN %s " % unit)
 
-    def querryvertcursorunit(self):
+    def queryvertcursorunit(self):
         vertunit = self.scope.query("CURS:MAN:VUN? ")
         return vertunit
 
     def setmanualvercursorunit(self, vertunit):
         self.scope.write("CURS:MAN:VUN %s " % vertunit)
 
-    def querrymanualAXpos(self):
+    def queryemanualAXpos(self):
         AXPOS = self.scope.query("CURS:MAN:AX? ")
         return AXPOS
 
     def setmanualAXpos(self,axpos):
         self.scope.write("CURS:MAN:AX %s " %axpos)
 
-    def querrymanualbxpos(self):
+    def queryemanualbxpos(self):
         bxpos = self.scope.query("CURS:MAN:BX? ")
         return bxpos
 
     def setmanualAXpos(self,bxpos):
         self.scope.write("CURS:MAN:BX %s " %bxpos)
 
-    def querrymanualaypos(self):
+    def queryemanualaypos(self):
         AYpos = self.scope.query("CURS:MAN:AY? ")
         return AYpos
 
     def setmanualaypos(self, aypos):
         self.scope.write("CURS:MAN:AY %s " % aypos)
 
-    def querrymanualbypos(self):
+    def queryemanualbypos(self):
         bypos=self.scope.query("CURS:MAN:BY?" )
         return bypos
 
