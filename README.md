@@ -4,7 +4,7 @@ Visa drivers for my and your instruments!
 # Compatible instruments  
 Instrument| Type of instrument | Manufaturer | Compatible |Tested connection method|
 :------------ |:-------------------|:------------|:-----------| :------------| 
-DS1104| scoop              | rigol       | &check;    | tcpip|
+[DS1104](https://www.rigolna.com/products/digital-oscilloscopes/1000z)| scoop              | rigol       | &check;    | tcpip|
 
 
 # Todo
