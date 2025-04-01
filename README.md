@@ -20,5 +20,6 @@ This list wil grow with the project
 - [ ] write the decoder funtions once a protocol decoder hase been aquired
 - [ ] added display and IEEE commands 
 - [ ] implement soft limits
-- [ ] implement further functions as needed 
+- [ ] implement further functions as needed
+- [ ] setting channel ofset needs implementing 
 - [ ] add something that I have forgoten 
