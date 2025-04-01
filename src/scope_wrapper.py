@@ -66,7 +66,7 @@ class Scope(object):
         self.scope.write(":ACQ:MDEP %s" % memmorydepth)
 
 
-    def queryaquiretype(self):
+    def querraquiretype(self):
         """query the acquisition mode of the oscilloscope"""
         aquiretype = self.scope.query(":ACQ:MDEP?")
         return aquiretype
@@ -96,28 +96,35 @@ class Scope(object):
         return channelbw
 
     def setchannelBW(self,channel,BW):
+        """sets channel bandwith of the scope  20MHz"""
         self.scope.write(":CHAN%d:BWL %s " %(channel,BW))
 
     def querychanelcoupling(self,channel):
+        """querry's what channel coupling the  chosen channel has (DC,AC,GND)"""
         channelcoupling = self.scope.query(":CHAN%d:COUP?"%channel)
         return channelcoupling
 
 
     def setchannelcoupling(self,channel,coupling):
+        """sets what channel coupling the  chosen channel has (DC,AC,GND)"""
         self.scope.write("CHAN%d:COUP %s " %(channel,coupling))
 
     def querydisplaychannel(self,channel):
+        """querry's if the channel is enabled or disabled """
         display = self.scope.query(":CHAN%d:DISP?"%channel)
         return display
 
     def setdisplaychannel(self,channel,status):
+        """enables or disables the """
         self.scope.write("CHAN%d:DISP %s " %(channel,status))
 
     def querydchannelinversion(self,channel):
+        """querry's if the chanel is inverted or not """
         invers = self.scope.query(":CHAN%d:INV?"%channel)
         return invers
 
     def setchannelinversion(self,channel,inversion):
+        """sets the passed channel to inverted """
         self.scope.write("CHAN%d:INV %s " %(channel,inversion))
 
     def querydchanneloffset(self,channel):#TODO timout opvangen
