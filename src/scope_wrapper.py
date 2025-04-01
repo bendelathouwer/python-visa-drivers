@@ -127,22 +127,33 @@ class Scope(object):
         """sets the passed channel to inverted """
         self.scope.write("CHAN%d:INV %s " %(channel,inversion))
 
-    def querydchanneloffset(self,channel):#TODO timout opvangen
+    def querydchanneloffset(self,channel):
+        """querrys the channel ofset , returnd in volts and engineering notation """
         offset = self.scope.query(":CHAN%d:OFFS?"%channel)
         return offset
 
-    def querychannelrange(self,channel):#
+    def setdchanneloffset(self,channel,offset):
+        """sets the offset of the specified channel using volts and in engineering notation"""
+        self.scope.query(":CHAN %s:OFFS %s"%(channel,offset))
+
+
+    def querychannelrange(self,channel):
+        """querry's the vertical range of the instrument , unit used is volts """
         range=self.scope.query("CHAN%d:RANG? " %channel)
         return range
 
     def setchannelrange(self,channel,range):
+        """sets the range of the specified channel, nit is volts and using engineering notation  """
         self.scope.write("CHAN%d:RANG %s " %(channel,range))
 
-    def querychannelcal(self,channel):#TODO understand this
+    def querychannelcal(self,channel):
+        """  Set the delay calibration time of the specified channel to calibrate the zero offset ,unit is s and using engineering notation"""
         cal = self.scope.query("CHAN%d:TCAL? " %channel)
         return cal
 
     def setchannelcal(self,channel,cal):
+        """Set the delay calibration time of the specified channel to calibrate the zero offset
+of the corresponding channel. Unit is s and using engineering notation """
         self.scope.write("CHAN%d:TCAL %s " %(channel,cal))
 
     def querychannelscale(self,channel):#TODO understand this
