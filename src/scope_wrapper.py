@@ -156,33 +156,53 @@ class Scope(object):
 of the corresponding channel. Unit is s and using engineering notation """
         self.scope.write("CHAN%d:TCAL %s " %(channel,cal))
 
-    def querychannelscale(self,channel):#TODO understand this
+    def querychannelscale(self,channel):
+        """Query the vertical scale of the specified channel. The default unit is V and uses engineering notation.
+        this is also dependend on the probe attenuation
+"""
         scale=self.scope.query("CHAN%d:SCAL? " %channel)
         return scale
 
     def setchannelscale(self,channel,scale):
+        """Sets the vertical scale of the specified channel. The default unit is V and uses engineering notation.
+        this is also dependend on the probe attenuation
+        """
         self.scope.write("CHAN%d:SCAL %s " %(channel,scale))
 
-    def querychannelvernier(self,channel):
-        status= self.scope.query("CHAN%d:VERN? " % channel)
-        return status
-    def setchannelvernier(self,channel,vernier):
 
-        self.scope.write("CHAN%d:VERN %s " % (channel, vernier))
-
-    def queryproberatio(self,channel):#TODO understand this
+    def queryproberatio(self,channel):
+        """Querry's the probe ratio.Default value is 10x . This is the attenuation of speccified channel.
+        Using the following attenuations 0.01|0.02|0.05|0.1|0.2|0.5|1|2|5|10|20|50|
+        100|200|500|1000"""
         proberatio=self.scope.query("CHAN%d:PROB? " %channel)
         return proberatio
 
     def setproberatio(self,channel,ratio):
+        """Sets the probe ratio.Default value is 10x . This is the attenuation of speccified channel.
+        Using the following attenuations 0.01|0.02|0.05|0.1|0.2|0.5|1|2|5|10|20|50|
+        100|200|500|1000"""
         self.scope.write("CHAN%d:PROB %s " %(channel,ratio))
 
     def querychanelunit(self,channel):
+        """Querry's the channel unit of the specified channel. The following parameters can be returned
+        VOLTage|WATT|AMPere|UNKNown. Default value is VOLTage"""
         unit = self.scope.query("CHAN%d:UNIT? " % channel)
         return unit
 
     def setchannelunit(self,channel,unit):
+        """Querry's the channel unit of the specified channel. The following parameters can be passed
+               VOLTage|WATT|AMPere|UNKNown. Default value is VOLTage"""
         self.scope.write("CHAN%d:UNIT %s " % (channel, unit))
+
+    def querrychannelvernier(self,channel):
+        """Querry's the vernier status of the speccified channel. The default state is of"""
+        vernier=self.scope.write("CHAN%d:VERN ?" % (channel))
+        return vernier
+
+    def setchannelvernier(self,channel,vernier):
+        """  sets the vernier status of the speccified channel. """
+        self.scope.write("CHAN%d:VERN %s " % (channel, vernier))
+
 
     def querycursormode(self):
         mode = self.scope.query("CURS:MODE?")
