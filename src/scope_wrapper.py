@@ -7,7 +7,7 @@ import pyvisa
 
 rm = pyvisa.ResourceManager()
 class Scope(object):
-    """  reads in the resource string given and try's te establisch coms.
+    """ Reads in the resource string given and try's te establisch coms.
     Also prints the connecte identifyer string """
     def __init__(self,visaadder):
         self.visa_instr_list= rm.list_resources()
@@ -22,7 +22,7 @@ class Scope(object):
         self.scope.timeout = 20000
 
     def autoscale(self):
-        """autoscales the scope """
+        """Autoscales the scope """
         self.scope.write(":AUT")
 
     def clearscope(self):
@@ -30,15 +30,15 @@ class Scope(object):
         self.scope.write(":CLE")
 
     def scoperun(self):
-        """sets the scope in run mode """
+        """Sets the scope in run mode """
         self.scope.write(":RUN")
 
     def scopestop(self):
-        """sets the scope in stop mode """
+        """Sets the scope in stop mode """
         self.scope.write(":STOP")
 
     def singlecapture(self):
-        """sets the scope in single capture mode """
+        """Sets the scope in single capture mode """
         self.scope.write(":SING")
 
     def forcetrigger(self):
@@ -46,37 +46,37 @@ class Scope(object):
         self.scope.write(":TFOR")
 
     def querynrofavrages(self):
-        """querrys the number of acquisition avarages"""
+        """Querry's the number of acquisition avarages"""
         avrages=self.scope.query(":ACQ:AVER?")
         return avrages
 
     def setnrofavrages(self,nr):
-        """sets the number of acquisition avarages"""
+        """Sets the number of acquisition avarages"""
         self.scope.write(":ACQ:AVER %d"%nr)
 
     def querymemdepth(self):
-        """querrys the number of waveformpoints that can be stored in a single trigger sample
+        """Querry's the number of waveformpoints that can be stored in a single trigger sample
          The default unit is pts (points)"""
         memdepth = self.scope.query(":ACQ:MDEP?")
         return memdepth
 
     def setmemdepth(self,memmorydepth):
-        """sets the number of waveformpoints that can be stored in a single trigger sample
+        """Sets the number of waveformpoints that can be stored in a single trigger sample
               The default unit is pts (points)"""
         self.scope.write(":ACQ:MDEP %s" % memmorydepth)
 
 
     def querraquiretype(self):
-        """query the acquisition mode of the oscilloscope"""
+        """Querry's the acquisition mode of the oscilloscope"""
         aquiretype = self.scope.query(":ACQ:MDEP?")
         return aquiretype
 
     def setaquiretype(self, aquiretype):
-        """sets the acquisition mode of the oscilloscope"""
+        """Sets the acquisition mode of the oscilloscope"""
         self.scope.write(":ACQuire:TYPE %s" % aquiretype)
 
     def querysamplerate(self):
-        """querrys the samplerate of the scope in samples per second and in engineering notation"""
+        """Querry's the samplerate of the scope in samples per second and in engineering notation"""
         samplerate = self.scope.query(":ACQ:SRAT?")
         return samplerate
 
@@ -91,54 +91,54 @@ class Scope(object):
         self.scope.write(":CAL:QUIT")
 
     def querychanelBW(self,channel):
-        """query the bandwidth limit parameter of the specified channel."""
+        """Querry's the bandwidth limit parameter of the specified channel."""
         channelbw = self.scope.query(":CHAN%d:BWL?"%channel)
         return channelbw
 
     def setchannelBW(self,channel,BW):
-        """sets channel bandwith of the scope  20MHz"""
+        """Sets channel bandwith of the scope  20MHz"""
         self.scope.write(":CHAN%d:BWL %s " %(channel,BW))
 
     def querychanelcoupling(self,channel):
-        """querry's what channel coupling the  chosen channel has (DC,AC,GND)"""
+        """Querry's what channel coupling the  chosen channel has (DC,AC,GND)"""
         channelcoupling = self.scope.query(":CHAN%d:COUP?"%channel)
         return channelcoupling
 
 
     def setchannelcoupling(self,channel,coupling):
-        """sets what channel coupling the  chosen channel has (DC,AC,GND)"""
+        """Sets what channel coupling the  chosen channel has (DC,AC,GND)"""
         self.scope.write("CHAN%d:COUP %s " %(channel,coupling))
 
     def querydisplaychannel(self,channel):
-        """querry's if the channel is enabled or disabled """
+        """Querry's if the channel is enabled or disabled """
         display = self.scope.query(":CHAN%d:DISP?"%channel)
         return display
 
     def setdisplaychannel(self,channel,status):
-        """enables or disables the """
+        """Sets if the channel is enabled or disabled """
         self.scope.write("CHAN%d:DISP %s " %(channel,status))
 
     def querydchannelinversion(self,channel):
-        """querry's if the chanel is inverted or not """
+        """Querry's if the chanel is inverted or not """
         invers = self.scope.query(":CHAN%d:INV?"%channel)
         return invers
 
     def setchannelinversion(self,channel,inversion):
-        """sets the passed channel to inverted """
+        """Sets the passed channel to inverted """
         self.scope.write("CHAN%d:INV %s " %(channel,inversion))
 
     def querydchanneloffset(self,channel):
-        """querrys the channel ofset , returnd in volts and engineering notation """
+        """Querrys the channel ofset , returnd in volts and engineering notation """
         offset = self.scope.query(":CHAN%d:OFFS?"%channel)
         return offset
 
     def setdchanneloffset(self,channel,offset):
-        """sets the offset of the specified channel using volts and in engineering notation"""
+        """Sets the offset of the specified channel using volts and in engineering notation"""
         self.scope.query(":CHAN %s:OFFS %s"%(channel,offset))
 
 
     def querychannelrange(self,channel):
-        """querry's the vertical range of the instrument , unit used is volts """
+        """Querry's the vertical range of the instrument , unit used is volts """
         range=self.scope.query("CHAN%d:RANG? " %channel)
         return range
 
@@ -158,8 +158,7 @@ of the corresponding channel. Unit is s and using engineering notation """
 
     def querychannelscale(self,channel):
         """Query the vertical scale of the specified channel. The default unit is V and uses engineering notation.
-        this is also dependend on the probe attenuation
-"""
+        this is also dependend on the probe attenuation"""
         scale=self.scope.query("CHAN%d:SCAL? " %channel)
         return scale
 
@@ -200,24 +199,34 @@ of the corresponding channel. Unit is s and using engineering notation """
         return vernier
 
     def setchannelvernier(self,channel,vernier):
-        """  sets the vernier status of the speccified channel. """
+        """ Sets the vernier status of the speccified channel. """
         self.scope.write("CHAN%d:VERN %s " % (channel, vernier))
 
 
     def querycursormode(self):
+        """Querry's the cursor measurement mode. Returns one of the following params OFF|MANual|TRACk|AUTO|XY.
+         The default param is OFF"""
         mode = self.scope.query("CURS:MODE?")
         return mode
 
     def setcursormode(self,mode):
+        """Sets the cursor measurement mode. Returns one of the following params OFF|MANual|TRACk|AUTO|XY.
+               The default param is OFF, XY only works when the horizontal timebase mode is in XY"""
         self.scope.write("CURS:MODE %s " %mode)
 
     def querymanualcursortype(self):
+        """Querry's  the cursor type in manual cursor measurement mode. Returns the folowing params X|Y,
+        default param is x"""
+
         type = self.scope.query("CURS:MAN:TYPE?")
         return type
 
     def setmanualcursortype(self,cursortype):
+        """Sets the cursor type in manual cursor measurement mode. Returns the folowing params X|Y,
+              default param is x"""
         self.scope.write(":CURS:MAN:TYPE %s " %cursortype)
 
+    # linting till here
     def querymanualcursorsource(self):
         source = self.scope.query("CURS:MAN:SOUR?")
         return source
