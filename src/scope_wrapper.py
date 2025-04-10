@@ -391,10 +391,6 @@ class Scope(object):
           bxvalue = self.scope.query("CURS:AUTO:BX? " )
           return bxvalue
 
-    def querryautocursorbx(self):
-          bxvalue = self.scope.query("CURS:AUTO:BX? " )
-          return bxvalue
-
     def querryautocursoray(self):
         ayvalue = self.scope.query("CURS:AUTO:ay? " )
         return ayvalue
