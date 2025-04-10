@@ -1,8 +1,11 @@
+"""sql demo for the scope wrapper """
+
 import sqlalchemy as db
 from sqlalchemy import *
 from sqlalchemy_utils import *
-import scope_wrapper
 import matplotlib.pyplot as plt
+import scope_wrapper
+
 
 
 #creates a connection and if DB does not exist it creats it
