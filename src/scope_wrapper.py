@@ -153,7 +153,7 @@ class Scope(object):
 
     def setchannelcal(self,channel,cal):
         """Set the delay calibration time of the specified channel to calibrate the zero offset
-of the corresponding channel. Unit is s and using engineering notation """
+           of the corresponding channel. Unit is s and using engineering notation """
         self.scope.write("CHAN%d:TCAL %s " %(channel,cal))
 
     def querychannelscale(self,channel):
@@ -226,21 +226,26 @@ of the corresponding channel. Unit is s and using engineering notation """
               default param is x"""
         self.scope.write(":CURS:MAN:TYPE %s " %cursortype)
 
-    # linting till here
+
     def querymanualcursorsource(self):
+        """Querry's the source of the manual cursors, returns one of the 
+        following params {CHANnel1|CHANnel2|CHANnel3|CHANnel4|MATH|LA"""
         source = self.scope.query("CURS:MAN:SOUR?")
         return source
 
     def setmanualcursorsource(self,source):
+        """sets's the source of the manual cursors, returns one of the 
+        following params {CHANnel1|CHANnel2|CHANnel3|CHANnel4|MATH|LA"""
         self.scope.write("CURS:MAN:SOUR %s " % source)
 
-    def queryycursorunit(self):
+    def queryycursorunit(self):""
         unit = self.scope.query("CURS:MAN:TUN? ")
         return unit
 
     def setmanualcursorunit(self, unit):
         self.scope.write("CURS:MAN:TUN %s " % unit)
 
+    # linting till here
     def queryvertcursorunit(self):
         vertunit = self.scope.query("CURS:MAN:VUN? ")
         return vertunit
