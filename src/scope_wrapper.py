@@ -238,11 +238,15 @@ class Scope(object):
         following params {CHANnel1|CHANnel2|CHANnel3|CHANnel4|MATH|LA"""
         self.scope.write("CURS:MAN:SOUR %s " % source)
 
-    def queryycursorunit(self):""
+    def queryycursorunit(self):
+        """
+        querry's the cursor unit , returns S|HZ|DEGRee|PERCent
+        """
         unit = self.scope.query("CURS:MAN:TUN? ")
         return unit
 
     def setmanualcursorunit(self, unit):
+        """ sets the cursor unit , returns S|HZ|DEGRee|PERCent"""
         self.scope.write("CURS:MAN:TUN %s " % unit)
 
     # linting till here
