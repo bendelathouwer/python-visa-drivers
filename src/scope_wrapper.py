@@ -251,10 +251,15 @@ class Scope(object):
 
     # linting till here
     def queryvertcursorunit(self):
+        """querry's the vertical curserunit , returns percent or source. 
+        The latter uses the unit from the source """
         vertunit = self.scope.query("CURS:MAN:VUN? ")
         return vertunit
 
     def setmanualvercursorunit(self, vertunit):
+        """sets the vertical unit , this can be PERCent for 
+        percentage or SOURce for the unit wich is curently 
+        in use by the source """
         self.scope.write("CURS:MAN:VUN %s " % vertunit)
 
     def queryemanualAXpos(self):
