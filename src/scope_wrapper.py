@@ -263,13 +263,21 @@ class Scope(object):
         self.scope.write("CURS:MAN:VUN %s " % vertunit)
 
     def queryemanualAXpos(self):
+        """querys the manual cursor position 
+        of the horizontal a cursor, range 5-594, default 100
+        """
         AXPOS = self.scope.query("CURS:MAN:AX? ")
         return AXPOS
 
     def setmanualAXpos(self,axpos):
+        """querys the manual cursor position 
+        of the horizontal a cursor ,range 5-594 default 100
+       TODO add range controll to catch out of bounds """
         self.scope.write("CURS:MAN:AX %s " %axpos)
 
     def queryemanualbxpos(self):
+        """querry's the horizontal b cursor in manual mode
+        range is from 5 to 594"""
         bxpos = self.scope.query("CURS:MAN:BX? ")
         return bxpos
 
