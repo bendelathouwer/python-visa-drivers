@@ -249,6 +249,7 @@ class Scope(object):
         """ sets the cursor unit , returns S|HZ|DEGRee|PERCent"""
         self.scope.write("CURS:MAN:TUN %s " % unit)
 
+<<<<<<< Updated upstream
     # linting till here
     def queryvertcursorunit(self):
         """querry's the vertical curserunit , returns percent or source. 
@@ -856,6 +857,8 @@ class Scope(object):
     def measurmentstatreset(self):
         self.scope.write(":MEASure:STATistic:RESet")
 
+=======
+>>>>>>> Stashed changes
     def takemeasurement(self,channel,mode,form):
         self.scope.write(":WAVeform:SOURce %s" %channel)
         self.scope.write(":WAVeform:MODE %s" %mode)
