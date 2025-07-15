@@ -250,6 +250,7 @@ class Scope(object):
         self.scope.write("CURS:MAN:TUN %s " % unit)
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     # linting till here
     def queryvertcursorunit(self):
         """querry's the vertical curserunit , returns percent or source. 
@@ -857,6 +858,8 @@ class Scope(object):
     def measurmentstatreset(self):
         self.scope.write(":MEASure:STATistic:RESet")
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     def takemeasurement(self,channel,mode,form):
