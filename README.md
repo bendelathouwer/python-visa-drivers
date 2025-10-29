@@ -14,11 +14,9 @@ This list wil grow with the project
 
 - [ ] write a read me and wiki
 - [ ] write a USBTMC wrapper which works alongside the tcpip code 
-- [ ] write a GPIB wrapper which works alongside the tcpip code
 - [ ] implement error handeling 
 - [ ] clean up the code
-- [ ] write the decoder funtions once a protocol decoder hase been aquired
-- [ ] added display and IEEE commands 
+- [ ] write the decoder funtions once a protocol generator  hase been aquired
 - [ ] implement soft limits
 - [ ] implement further functions as needed
 - [ ] setting channel ofset needs implementing 
