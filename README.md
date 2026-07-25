@@ -1,4 +1,4 @@
-   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![LabVIEW](https://img.shields.io/badge/labview-%23FFDB00.svg?style=for-the-badge&logo=labview&logoColor=black) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 # visa drivers
 [Visa drivers](https://www.ni.com/docs/en-US/bundle/ni-visa/page/ni-visa-overview.html) for my and your instruments!
 This repository
