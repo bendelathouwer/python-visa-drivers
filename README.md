@@ -28,11 +28,14 @@ This section contains planned improvements and missing features.
 The list will grow as the project develops.
 
 ---
-
+## Repository
+- [ ] Write a complete README and Wiki documentation
+---
 ## Python
 
-- [ ] Write a complete README and Wiki documentation
+
 - [ ] Implement a USBTMC wrapper alongside the existing TCP/IP communication
+- [ ]  Implement a GPIB wrapper alongside the existing TCP/IP communication(once instrument with GPIB becomes available ) 
 - [ ] Improve error handling
 - [ ] Clean up and refactor the codebase
 - [ ] Implement protocol decoder functions once a protocol generator is available
@@ -47,8 +50,11 @@ The list will grow as the project develops.
 
 - [x] Implement a way to display the complete VISA resource string
 - [x] Improve error handling
-- [ ] catch instrument timeout 
-
+- [ ] catch instrument timeout
+- [ ]  Implement a USBTMC wrapper alongside the existing TCP/IP communication
+- [ ]  Implement a GPIB wrapper alongside the existing TCP/IP communication(once instrument with GPIB becomes available )
+- [ ]  Implement protocol decoder functions once a protocol generator is available
+- [ ]  Add missing features and improvements
 
 ---
 
