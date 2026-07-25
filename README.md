@@ -11,7 +11,7 @@ Instrument| Type of instrument | Manufaturer | Compatible |Tested connection met
 # Todo
 Here you will find a list of what still needs to be done.
 This list wil grow with the project 
-#python code 
+# python code 
 - [ ] write a read me and wiki
 - [ ] write a USBTMC wrapper which works alongside the tcpip code 
 - [ ] implement error handeling 
@@ -20,4 +20,8 @@ This list wil grow with the project
 - [ ] implement soft limits
 - [ ] implement further functions as needed
 - [ ] setting channel ofset needs implementing 
-- [ ] add something that I have forgoten 
+- [ ] add something that I have forgoten
+# Labview
+- [ ] add a way to find to check if device exist
+- [ ] find a way to print the whole resource string
+
